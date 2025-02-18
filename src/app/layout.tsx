@@ -6,8 +6,9 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Studio',
-    default: 'Studio - Award winning developer studio based in Denmark',
+    template: '%s - Mudapedia Digital Indonesia',
+    default:
+      'Mudapedia Digital Indonesia - The pace in the Web3, blockchain, and crypto industries.',
   },
 }
 

@@ -81,9 +81,14 @@ function Header({
           />
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button href="/contact" invert={invert}>
+          <Button
+            href="/contact"
+            invert={invert}
+            className="border-2 border-indigo-600 bg-transparent text-indigo-600 hover:border-indigo-700 hover:bg-indigo-600 hover:text-white focus:bg-indigo-700 focus:text-white"
+          >
             Contact us
           </Button>
+
           <button
             ref={toggleRef}
             type="button"
@@ -92,7 +97,7 @@ function Header({
             aria-controls={panelId}
             className={clsx(
               'group -m-2.5 rounded-full p-2.5 transition',
-              invert ? 'hover:bg-white/10' : 'hover:bg-neutral-950/10',
+              invert ? 'hover:bg-white/10' : 'hover:bg-indigo-950/10',
             )}
             aria-label="Toggle navigation"
           >
@@ -263,7 +268,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
           className="relative isolate flex w-full flex-col pt-9"
         >
           <GridPattern
-            className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
+            className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-indigo-50 stroke-indigo-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
             yOffset={-96}
             interactive
           />
