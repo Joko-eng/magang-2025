@@ -84,7 +84,7 @@ function Header({
           <Button
             href="/contact"
             invert={invert}
-            className="border-2 border-indigo-600 bg-transparent text-indigo-600 hover:border-indigo-700 hover:bg-indigo-600 hover:text-white focus:bg-indigo-700 focus:text-white"
+            className="border-none bg-indigo-600 text-white hover:bg-indigo-800 focus:bg-indigo-800"
           >
             Contact us
           </Button>
@@ -97,7 +97,7 @@ function Header({
             aria-controls={panelId}
             className={clsx(
               'group -m-2.5 rounded-full p-2.5 transition',
-              invert ? 'hover:bg-white/10' : 'hover:bg-indigo-950/10',
+              invert ? 'hover:bg-indigo-500/10' : 'hover:bg-indigo-700/10',
             )}
             aria-label="Toggle navigation"
           >
@@ -105,8 +105,8 @@ function Header({
               className={clsx(
                 'h-6 w-6',
                 invert
-                  ? 'fill-white group-hover:fill-neutral-200'
-                  : 'fill-neutral-950 group-hover:fill-neutral-700',
+                  ? 'fill-indigo-500 group-hover:fill-indigo-600'
+                  : 'fill-indigo-700 group-hover:fill-indigo-800',
               )}
             />
           </button>
