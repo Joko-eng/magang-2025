@@ -10,45 +10,47 @@ import { PageIntro } from '@/components/PageIntro'
 import { PageLinks } from '@/components/PageLinks'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StatList, StatListItem } from '@/components/StatList'
-import imageAngelaFisher from '@/images/team/angela-fisher.jpg'
-import imageBenjaminRussel from '@/images/team/benjamin-russel.jpg'
-import imageBlakeReid from '@/images/team/blake-reid.jpg'
-import imageChelseaHagon from '@/images/team/chelsea-hagon.jpg'
-import imageDriesVincent from '@/images/team/dries-vincent.jpg'
-import imageEmmaDorsey from '@/images/team/emma-dorsey.jpg'
-import imageJeffreyWebb from '@/images/team/jeffrey-webb.jpg'
-import imageKathrynMurphy from '@/images/team/kathryn-murphy.jpg'
-import imageLeonardKrasner from '@/images/team/leonard-krasner.jpg'
-import imageLeslieAlexander from '@/images/team/leslie-alexander.jpg'
-import imageMichaelFoster from '@/images/team/michael-foster.jpg'
-import imageWhitneyFrancis from '@/images/team/whitney-francis.jpg'
+
+import imageAuliaMuhammadIqbal from '@/images/team/aulia-muhammad-iqbal.jpg'
+import imageRafifMuhammadMR from '@/images/team/rafif-muhammad-mr.jpg'
+import imageGilangAristaRachman from '@/images/team/gilang-arista-rachman.jpg'
+import imageTheoFillusJG from '@/images/team/theo-fillus-jg.jpg'
+import imageRezaMaulana from '@/images/team/reza-maulana.jpg'
+import imageFildzanuRidwan from '@/images/team/fildzanu-ridwan.jpg'
+import imageMohDaffaFirdaus from '@/images/team/moh-daffa-firdaus.jpg'
+
+import imageFeniEldiana from '@/images/team/feni-eldiana.jpg'
+import imageFilfiaAntikaAndriana from '@/images/team/filfia-antika-andriana.jpg'
+import imageJennyNurAlfianHandayani from '@/images/team/jenny-nur-alfian-handayani.jpg'
+
 import { loadArticles } from '@/lib/mdx'
 
 function Culture() {
   return (
-    <div className="mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32">
+    <div className="mt-24 rounded-4xl bg-indigo-800 py-24 sm:mt-32 lg:mt-40 lg:py-32">
       <SectionIntro
         eyebrow="Our culture"
-        title="Balance your passion with your passion for life."
+        title="Innovate with Purpose, Grow with Passion."
         invert
       >
         <p>
-          We are a group of like-minded people who share the same core values.
+          We are a team of forward thinkers, united by a shared vision to
+          revolutionize the digital world.
         </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
-          <GridListItem title="Loyalty" invert>
-            Our team has been with us since the beginning because none of them
-            are allowed to have LinkedIn profiles.
+          <GridListItem title="Collaboration" invert>
+            We thrive on teamwork and shared success, ensuring that every
+            project benefits from diverse expertise.
           </GridListItem>
           <GridListItem title="Trust" invert>
-            We don’t care when our team works just as long as they are working
-            every waking second.
+            Flexibility is our foundation we focus on results, not rigid
+            schedules.
           </GridListItem>
-          <GridListItem title="Compassion" invert>
-            You never know what someone is going through at home and we make
-            sure to never find out.
+          <GridListItem title="Innovation" invert>
+            We embrace change and push boundaries to create cutting edge Web3
+            solutions.
           </GridListItem>
         </GridList>
       </Container>
@@ -58,72 +60,62 @@ function Culture() {
 
 const team = [
   {
-    title: 'Leadership',
+    title: 'Team',
     people: [
       {
-        name: 'Leslie Alexander',
+        name: 'Aulia Muhammad Iqbal',
         role: 'Co-Founder / CEO',
-        image: { src: imageLeslieAlexander },
+        image: { src: imageAuliaMuhammadIqbal },
       },
       {
-        name: 'Michael Foster',
+        name: 'Rafif Muhamamd M.R',
+        role: 'Co-Founder / COO',
+        image: { src: imageRafifMuhammadMR },
+      },
+      {
+        name: 'Gilang Arista Rachman',
         role: 'Co-Founder / CTO',
-        image: { src: imageMichaelFoster },
+        image: { src: imageGilangAristaRachman },
       },
       {
-        name: 'Dries Vincent',
-        role: 'Partner & Business Relations',
-        image: { src: imageDriesVincent },
+        name: 'Theo Fillus J.G',
+        role: 'CFO',
+        image: { src: imageTheoFillusJG },
+      },
+      {
+        name: 'Reza Maulana',
+        role: 'Co-Founder / CAO',
+        image: { src: imageRezaMaulana },
+      },
+      {
+        name: 'Fildzanu Ridwan',
+        role: 'Co-Founder / Graphic Desainer',
+        image: { src: imageFildzanuRidwan },
+      },
+      {
+        name: 'Moh. Daffa Firdaus',
+        role: 'Co-Founder / Social Media',
+        image: { src: imageMohDaffaFirdaus },
       },
     ],
   },
   {
-    title: 'Team',
+    title: 'Internship Program',
     people: [
       {
-        name: 'Chelsea Hagon',
-        role: 'Senior Developer',
-        image: { src: imageChelseaHagon },
+        name: 'Jenny Nur Alfian Handayani',
+        role: 'Student Internship',
+        image: { src: imageJennyNurAlfianHandayani },
       },
       {
-        name: 'Emma Dorsey',
-        role: 'Senior Designer',
-        image: { src: imageEmmaDorsey },
+        name: 'Filfia Antika Andriana',
+        role: 'Student Internship',
+        image: { src: imageFilfiaAntikaAndriana },
       },
       {
-        name: 'Leonard Krasner',
-        role: 'VP, User Experience',
-        image: { src: imageLeonardKrasner },
-      },
-      {
-        name: 'Blake Reid',
-        role: 'Junior Copywriter',
-        image: { src: imageBlakeReid },
-      },
-      {
-        name: 'Kathryn Murphy',
-        role: 'VP, Human Resources',
-        image: { src: imageKathrynMurphy },
-      },
-      {
-        name: 'Whitney Francis',
-        role: 'Content Specialist',
-        image: { src: imageWhitneyFrancis },
-      },
-      {
-        name: 'Jeffrey Webb',
-        role: 'Account Coordinator',
-        image: { src: imageJeffreyWebb },
-      },
-      {
-        name: 'Benjamin Russel',
-        role: 'Senior Developer',
-        image: { src: imageBenjaminRussel },
-      },
-      {
-        name: 'Angela Fisher',
-        role: 'Front-end Developer',
-        image: { src: imageAngelaFisher },
+        name: 'Feni Eldiana',
+        role: 'Student Internship',
+        image: { src: imageFeniEldiana },
       },
     ],
   },
@@ -154,7 +146,7 @@ function Team() {
                           <Image
                             alt=""
                             {...person.image}
-                            className="h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105"
+                            className="h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105 lg:h-80"
                           />
                           <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
                             <p className="font-display text-base/6 font-semibold tracking-wide text-white">
@@ -189,31 +181,32 @@ export default async function About() {
 
   return (
     <>
-      <PageIntro eyebrow="About us" title="Our strength is collaboration">
+      <PageIntro eyebrow="About us" title="Collaboration is our strength">
         <p>
-          We believe that our strength lies in our collaborative approach, which
-          puts our clients at the center of everything we do.
+          At Mudapedia, we believe that true innovation comes from
+          collaboration. By working together, we create cutting edge Web3
+          solutions that put our clients at the center of everything we do.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
-            Studio was started by three friends who noticed that developer
-            studios were charging clients double what an in-house team would
-            cost. Since the beginning, we have been committed to doing things
-            differently by charging triple instead.
+            Mudapedia was founded by a team passionate about blockchain and
+            digital transformation. We saw the need for a smarter, more
+            efficient way to bridge businesses with decentralized technology.
+            From the start, we've been committed to delivering impactful
+            solutions that drive real change.
           </p>
           <p>
-            At Studio, we’re more than just colleagues — we’re a family. This
-            means we pay very little and expect people to work late. We want our
-            employees to bring their whole selves to work. In return, we just
-            ask that they keep themselves there until at least 6:30pm.
+            We’re more than just a team we’re a community. We value creativity,
+            dedication, and the power of shared knowledge. At Mudapedia, we
+            don't just build projects we build the future, together.
           </p>
         </div>
       </PageIntro>
       <Container className="mt-16">
         <StatList>
-          <StatListItem value="35" label="Underpaid employees" />
-          <StatListItem value="52" label="Placated clients" />
-          <StatListItem value="$25M" label="Invoices billed" />
+          <StatListItem value="11+" label="Web projects completed" />
+          <StatListItem value="5+" label="Clients served" />
+          <StatListItem value="2+" label="Years of industry experience" />
         </StatList>
       </Container>
 

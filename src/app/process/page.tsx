@@ -58,24 +58,30 @@ function Discover() {
     <Section title="Discover" image={{ src: imageWhiteboard }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
-          We work closely with our clients to understand their{' '}
-          <strong className="font-semibold text-neutral-950">needs</strong> and
-          goals, embedding ourselves in their every day operations to understand
-          what makes their business tick.
+          We begin by diving deep into our clients’ businesses to understand
+          their{' '}
+          <strong className="font-semibold text-neutral-950">
+            visions, goals, and challenges.
+          </strong>{' '}
+          Through an interactive and research driven approach, we analyze market
+          trends, competitor strategies, and the latest Web3 innovations. We
+          don’t just listen we comprehend what is truly needed.
         </p>
         <p>
-          Our team of private investigators shadow the company director’s for
-          several weeks while our account managers focus on going through their
-          trash. Our senior security experts then perform social engineering
-          hacks to gain access to their{' '}
-          <strong className="font-semibold text-neutral-950">business</strong>{' '}
-          accounts — handing that information over to our forensic accounting
-          team.
+          Next, our team conducts in-depth analysis to identify{' '}
+          <strong className="font-semibold text-neutral-950">
+            growth potential and the best solutions.
+          </strong>{' '}
+          We connect every dot, ensuring that each step creates real impact for
+          our clients.
         </p>
         <p>
-          Once the full audit is complete, we report back with a comprehensive{' '}
-          <strong className="font-semibold text-neutral-950">plan</strong> and,
-          more importantly, a budget.
+          The result? A clear strategy, a well defined action plan, and a{' '}
+          <strong className="font-semibold text-neutral-950">
+            realistic budget no hidden fees,
+          </strong>{' '}
+          no unnecessary complexities. We focus on efficiency and tangible
+          results.{' '}
         </p>
       </div>
 
@@ -83,12 +89,12 @@ function Discover() {
         Included in this phase
       </h3>
       <TagList className="mt-4">
-        <TagListItem>In-depth questionnaires</TagListItem>
-        <TagListItem>Feasibility studies</TagListItem>
-        <TagListItem>Blood samples</TagListItem>
-        <TagListItem>Employee surveys</TagListItem>
-        <TagListItem>Proofs-of-concept</TagListItem>
-        <TagListItem>Forensic audit</TagListItem>
+        <TagListItem>Proof Matters</TagListItem>
+        <TagListItem>Data Wins</TagListItem>
+        <TagListItem>Trust the Process</TagListItem>
+        <TagListItem>Facts First</TagListItem>
+        <TagListItem>Insight Driven</TagListItem>
+        <TagListItem>Smart Moves</TagListItem>
       </TagList>
     </Section>
   )
@@ -99,32 +105,33 @@ function Build() {
     <Section title="Build" image={{ src: imageLaptop, shape: 1 }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
-          Based off of the discovery phase, we develop a comprehensive roadmap
-          for each product and start working towards delivery. The roadmap is an
-          intricately tangled mess of technical nonsense designed to drag the
-          project out as long as possible.
+          At Mudapedia, we turn ideas into reality with a clear roadmap and
+          structured execution. Based on our discovery phase, we craft a
+          strategic plan tailored to each project, ensuring efficiency and
+          seamless development.
         </p>
         <p>
-          Each client is assigned a key account manager to keep lines of
-          communication open and obscure the actual progress of the project.
-          They act as a buffer between the client’s incessant nagging and the
-          development team who are hard at work scouring open source projects
-          for code to re-purpose.
+          Each client is paired with a dedicated manager, keeping communication
+          smooth and progress transparent. Our team works diligently, utilizing
+          the latest technologies and best practices to deliver high-quality
+          solutions.
         </p>
         <p>
-          Our account managers are trained to only reply to client emails after
-          9pm, several days after the initial email. This reinforces the general
-          aura that we are very busy and dissuades clients from asking for
-          changes.
+          We believe in agility, adapting to challenges while maintaining focus
+          on our end goal: delivering a powerful and scalable product that
+          exceeds expectations.
         </p>
       </div>
 
       <Blockquote
-        author={{ name: 'Debra Fiscal', role: 'CEO of Unseal' }}
+        author={{
+          name: 'I Putu Indra W.S',
+          role: 'Founder Digital Blockchain Indonesia',
+        }}
         className="mt-12"
       >
-        Studio were so regular with their progress updates we almost began to
-        think they were automated!
+        Mudapedia updates were so consistent and transparent, it felt like they
+        were always one step ahead!
       </Blockquote>
     </Section>
   )
@@ -135,31 +142,27 @@ function Deliver() {
     <Section title="Deliver" image={{ src: imageMeeting, shape: 2 }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
-          About halfway through the Build phase, we push each project out by 6
-          weeks due to a change in{' '}
-          <strong className="font-semibold text-neutral-950">
-            requirements
-          </strong>
-          . This allows us to increase the budget a final time before launch.
+          Halfway through the{' '}
+          <strong className="font-semibold text-neutral-950">Build</strong>{' '}
+          phase, we fine-tune project requirements to ensure the best outcome.
+          This often means extending timelines to perfect every detail, giving
+          us the opportunity to refine the final product before launch.{' '}
         </p>
         <p>
-          Despite largely using pre-built components, most of the{' '}
-          <strong className="font-semibold text-neutral-950">progress</strong>{' '}
-          on each project takes place in the final 24 hours. The development
-          time allocated to each client is actually spent making augmented
-          reality demos that go viral on social media.
+          While leveraging{' '}
+          <strong className="font-semibold text-neutral-950">pre-built</strong>{' '}
+          components for efficiency, our real progress happens in the final
+          stretch—where our team pushes the limits of innovation. Instead of
+          just delivering standard solutions, we focus on creating engaging
+          digital experiences that make an impact.
         </p>
         <p>
-          We ensure that the main pages of the site are{' '}
-          <strong className="font-semibold text-neutral-950">
-            fully functional
-          </strong>{' '}
-          at launch — the auxiliary pages will, of course, be lorem ipusm shells
-          which get updated as part of our exorbitant{' '}
-          <strong className="font-semibold text-neutral-950">
-            maintenance
-          </strong>{' '}
-          retainer.
+          At <strong className="font-semibold text-neutral-950">launch </strong>{' '}
+          we guarantee that all essential features are fully functional.
+          Additional enhancements and refinements are continuously rolled out,
+          ensuring long-term performance and scalability. Our commitment doesn’t
+          stop at delivery—we provide ongoing support to keep your platform
+          evolving.
         </p>
       </div>
 
@@ -168,16 +171,17 @@ function Deliver() {
       </h3>
       <List className="mt-8">
         <ListItem title="Testing">
-          Our projects always have 100% test coverage, which would be impressive
-          if our tests weren’t as porous as a sieve.
+          Every project undergoes rigorous testing to ensure top performance,
+          with layers of quality checks to minimize issues before launch.
         </ListItem>
         <ListItem title="Infrastructure">
-          To ensure reliability we only use the best Digital Ocean droplets that
-          $4 a month can buy.
+          We leverage high-performance cloud solutions, optimizing speed,
+          security, and scalability for seamless digital experiences.
         </ListItem>
         <ListItem title="Support">
-          Because we hold the API keys for every critical service your business
-          uses, you can expect a lifetime of support, and invoices, from us.
+          Our commitment doesn’t end at launch—we provide continuous updates,
+          security patches, and expert support to keep your platform at its
+          best.
         </ListItem>
       </List>
     </Section>
@@ -196,42 +200,42 @@ function Values() {
 
       <SectionIntro
         eyebrow="Our values"
-        title="Balancing reliability and innovation"
+        title="Balancing Innovation and Reliability"
       >
         <p>
-          We strive to stay at the forefront of emerging trends and
-          technologies, while completely ignoring them and forking that old
-          Rails project we feel comfortable using. We stand by our core values
-          to justify that decision.
+          At Mudapedia, we embrace the latest trends in Web3 and blockchain
+          while ensuring that every solution remains practical, scalable, and
+          secure. Our core values guide us in delivering impactful digital
+          experiences.
         </p>
       </SectionIntro>
 
       <Container className="mt-24">
         <GridList>
-          <GridListItem title="Meticulous">
-            The first part of any partnership is getting our designer to put
-            your logo in our template. The second step is getting them to do the
-            colors.
+          <GridListItem title="Precision">
+            Every project starts with a carefully structured plan, ensuring
+            seamless integration of technology with your brand identity.
           </GridListItem>
-          <GridListItem title="Efficient">
-            We pride ourselves on never missing a deadline which is easy because
-            most of the work was done years ago.
+          <GridListItem title="Efficiency">
+            We optimize workflows to deliver results on time leveraging smart
+            automation and ready to deploy solutions for faster execution.{' '}
           </GridListItem>
-          <GridListItem title="Adaptable">
-            Every business has unique needs and our greatest challenge is
-            shoe-horning those needs into something we already built.
+          <GridListItem title="Adaptability">
+            Every business is unique. We tailor our solutions to fit your needs
+            while maintaining scalability for future growth.
           </GridListItem>
-          <GridListItem title="Honest">
-            We are transparent about all of our processes, banking on the simple
-            fact our clients never actually read anything.
+          <GridListItem title="Transparency">
+            We believe in clear communication and open processes, ensuring our
+            clients stay informed every step of the way.
           </GridListItem>
-          <GridListItem title="Loyal">
-            We foster long-term relationships with our clients that go beyond
-            just delivering a product, allowing us to invoice them for decades.
+          <GridListItem title="Commitment">
+            Our long-term partnerships go beyond development we provide ongoing
+            support and updates to keep your business ahead.
           </GridListItem>
-          <GridListItem title="Innovative">
-            The technological landscape is always evolving and so are we. We are
-            constantly on the lookout for new open source projects to clone.
+          <GridListItem title="Innovation">
+            The digital landscape is always evolving, and so are we. We
+            continuously explore new technologies to bring you the best in Web3
+            and blockchain solutions.
           </GridListItem>
         </GridList>
       </Container>
@@ -242,17 +246,17 @@ function Values() {
 export const metadata: Metadata = {
   title: 'Our Process',
   description:
-    'We believe in efficiency and maximizing our resources to provide the best value to our clients.',
+    'We believe in efficiency, innovation, and maximizing resources to deliver the best Web3 solutions.',
 }
 
 export default function Process() {
   return (
     <>
-      <PageIntro eyebrow="Our process" title="How we work">
+      <PageIntro eyebrow="Our process" title="How We Work at Mudapedia">
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          We believe in efficiency, innovation, and maximizing resources to
+          deliver the best Web3 solutions. Our structured approach ensures that
+          every project is tailored to the unique needs of our clients.
         </p>
       </PageIntro>
 

@@ -139,7 +139,7 @@ function Clients() {
 export const metadata: Metadata = {
   title: 'Our Work',
   description:
-    'We believe in efficiency and maximizing our resources to provide the best value to our clients.',
+    'We craft Web3, blockchain, and crypto solutions that empower businesses - without reinventing the wheel, but always pushing boundaries',
 }
 
 export default async function Work() {
@@ -149,12 +149,12 @@ export default async function Work() {
     <>
       <PageIntro
         eyebrow="Our work"
-        title="Proven solutions for real-world problems."
+        title="Innovative solutions for the decentralized future."
       >
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          At Mudapedia, we believe in efficiency and impact. We craft Web3,
+          blockchain, and crypto solutions that empower businesses without
+          reinventing the wheel, but always pushing boundaries.
         </p>
       </PageIntro>
 

@@ -13,7 +13,7 @@ function Office({
     <address
       className={clsx(
         'text-sm not-italic',
-        invert ? 'text-neutral-300' : 'text-neutral-600',
+        invert ? 'text-neutral-100' : 'text-neutral-600',
       )}
     >
       <strong className={invert ? 'text-white' : 'text-neutral-950'}>
@@ -32,17 +32,10 @@ export function Offices({
   return (
     <ul role="list" {...props}>
       <li>
-        <Office name="Copenhagen" invert={invert}>
-          1 Carlsberg Gate
+        <Office name="Banyuwangi" invert={invert}>
+          Perum Gedong Blok. D No.5
           <br />
-          1260, København, Denmark
-        </Office>
-      </li>
-      <li>
-        <Office name="Billund" invert={invert}>
-          24 Lego Allé
-          <br />
-          7190, Billund, Denmark
+          Kertosari, Kec. Banyuwangi, Kabupaten Banyuwangi, Jawa Timur 68418
         </Office>
       </li>
     </ul>

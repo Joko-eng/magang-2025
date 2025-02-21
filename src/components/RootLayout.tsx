@@ -81,14 +81,9 @@ function Header({
           />
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button
-            href="/contact"
-            invert={invert}
-            className="border-none bg-indigo-600 text-white hover:bg-indigo-800 focus:bg-indigo-800"
-          >
+          <Button href="/contact" invert={invert}>
             Contact us
           </Button>
-
           <button
             ref={toggleRef}
             type="button"
@@ -105,7 +100,7 @@ function Header({
               className={clsx(
                 'h-6 w-6',
                 invert
-                  ? 'fill-indigo-500 group-hover:fill-indigo-600'
+                  ? 'fill-white group-hover:fill-neutral-200'
                   : 'fill-indigo-700 group-hover:fill-indigo-800',
               )}
             />
@@ -118,7 +113,7 @@ function Header({
 
 function NavigationRow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="even:mt-px sm:bg-neutral-950">
+    <div className="even:mt-px sm:bg-indigo-600">
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2">{children}</div>
       </Container>
@@ -136,10 +131,10 @@ function NavigationItem({
   return (
     <Link
       href={href}
-      className="group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16"
+      className="group relative isolate -mx-6 bg-indigo-600 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-200 sm:even:pl-16"
     >
       {children}
-      <span className="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+      <span className="absolute inset-y-0 -z-10 w-screen bg-indigo-800 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
     </Link>
   )
 }
@@ -211,13 +206,13 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
           layout
           id={panelId}
           style={{ height: expanded ? 'auto' : '0.5rem' }}
-          className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
+          className="relative z-50 overflow-hidden bg-indigo-600 pt-2"
           aria-hidden={expanded ? undefined : 'true'}
           // @ts-ignore (https://github.com/facebook/react/issues/17157)
           inert={expanded ? undefined : ''}
         >
-          <motion.div layout className="bg-neutral-800">
-            <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
+          <motion.div layout className="bg-neutral-100">
+            <div ref={navRef} className="bg-indigo-600 pb-16 pt-14">
               <Header
                 invert
                 panelId={panelId}
@@ -233,7 +228,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
               />
             </div>
             <Navigation />
-            <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
+            <div className="relative bg-indigo-600 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-200">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>

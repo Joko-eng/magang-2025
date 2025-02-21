@@ -9,39 +9,32 @@ import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
-import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
-import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
-import logoUnseal from '@/images/clients/unseal/logo-light.svg'
-import imageLaptop from '@/images/laptop.jpg'
+
+import logoDbi from '@/images/clients/dbi/dbi-logo-text-light.svg'
+import logoDbiDark from '@/images/clients/dbi/dbi-logo-text-dark.svg'
+import logoPavo from '@/images/clients/pavo/pavo-logo-text-light.svg'
+import logoGasvin from '@/images/clients/gasvin/gasvin-logo-text-light.svg'
+import logoNagapara from '@/images/clients/nagapara/nagapara-logo-text-light.svg'
+import imageResult from '@/images/result.jpg'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
 const clients = [
-  ['Phobia', logoPhobiaLight],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
+  ['DBI', logoDbi],
+  ['Pavo', logoPavo],
+  ['Gasvin', logoGasvin],
+  ['Nagapara', logoNagapara],
 ]
 
 function Clients() {
   return (
-    <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+    <div className="mt-24 rounded-4xl bg-indigo-800 py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
             We've partnered with countless innovative minds to bring Web3,
             blockchain, and crypto solutions to life.
           </h2>
-          <div className="h-px flex-auto bg-neutral-800" />
+          <div className="h-px flex-auto bg-neutral-100" />
         </FadeIn>
         <FadeInStagger faster>
           <ul
@@ -51,7 +44,12 @@ function Clients() {
             {clients.map(([client, logo]) => (
               <li key={client}>
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image
+                    src={logo}
+                    alt={client}
+                    className="h-full w-full"
+                    unoptimized
+                  />
                 </FadeIn>
               </li>
             ))}
@@ -133,8 +131,8 @@ function Services() {
       >
         <p>
           As long as those opportunities involve innovating and transforming
-          existing ideas into Web3, blockchain, and crypto solutions — we’re
-          full of endless possibilities.
+          existing ideas into Web3, blockchain, and crypto solutions we’re full
+          of endless possibilities.
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -142,7 +140,7 @@ function Services() {
           <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
             <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
               <StylizedImage
-                src={imageLaptop}
+                src={imageResult}
                 sizes="(min-width: 1024px) 41rem, 31rem"
                 className="justify-center lg:justify-end"
               />
@@ -202,11 +200,11 @@ export default async function Home() {
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+        client={{ name: 'DBIDark', logo: logoDbiDark }}
       >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
+        The team at Mudapedia goes above and beyond, delivering seamless Web3,
+        blockchain, and crypto solutions making complex technology feel
+        effortless.
       </Testimonial>
 
       <Services />
