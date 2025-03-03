@@ -1,0 +1,65 @@
+import logo from '@/images/clients/nagapara/nagapara-logo.svg'
+import imageHero from './hero.png'
+import imageCEO from './profile.png'
+
+export const caseStudy = {
+  client: 'Nagapara',
+  title: 'Empowering SMEs with Web3 & Digital Transactions',
+  description:
+    'Mudapedia collaborated with Nagapara to develop a modern website and a custom cryptocurrency, revolutionizing digital transactions in the SME industry, specifically for their tomato and chili sauce production business.',
+  summary: [
+    'Developed a corporate website to enhance Nagapara’s brand visibility and customer engagement.',
+    'Created a secure cryptocurrency to facilitate digital transactions and streamline financial operations.',
+    'Integrated Web3 technology to ensure transparency and efficiency in business transactions.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2024-12',
+  service: 'Company Website Development & Custom Cryptocurrency Creation',
+  testimonial: {
+    author: {
+      name: 'Pak Nurdin',
+      role: 'Founder of Nagapara',
+    },
+    content:
+      'Mudapedia has transformed our business by providing an advanced digital platform and a secure cryptocurrency solution. We can now process transactions faster, more securely, and efficiently, ensuring smooth operations and financial transparency.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+Mudapedia collaborated with **Nagapara** to develop a modern and secure digital infrastructure tailored for the **SME industry**, specifically focusing on **tomato and chili sauce production**. Our team created a **high-performance corporate website** to enhance the company's online presence and credibility, while also integrating a **custom cryptocurrency** to facilitate efficient and secure transactions. By leveraging **Web3 technology**, we ensured transparency in financial operations and improved the overall efficiency of supply chain management.
+
+## What we did
+
+<TagList>
+  <TagListItem>Corporate Website Development</TagListItem>
+  <TagListItem>Custom Cryptocurrency Creation</TagListItem>
+  <TagListItem>Web3 Integration for SME Transactions</TagListItem>
+  <TagListItem>Blockchain Security & Optimization</TagListItem>
+</TagList>
+
+<Blockquote
+  author={{
+    name: 'Pak Nurdin',
+    role: 'Founder of Nagapara',
+  }}
+  image={{ src: imageCEO }}
+>
+  Mudapedia has transformed our business by providing an advanced digital
+  platform and a secure cryptocurrency solution. We can now process transactions
+  faster, more securely, and efficiently, ensuring smooth operations and
+  financial transparency.
+</Blockquote>
+
+<StatList>
+  <StatListItem value="80%" label="Increase in digital transactions" />
+  <StatListItem value="3x" label="Improved financial efficiency" />
+  <StatListItem value="60%" label="Reduction in transaction costs" />
+  <StatListItem value="$1.5M+" label="Total value secured through blockchain" />
+</StatList>

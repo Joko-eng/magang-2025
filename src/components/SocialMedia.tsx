@@ -134,8 +134,16 @@ function LinkTreeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export const socialMediaProfiles = [
-  { title: 'Instagram', href: 'https://instagram.com', icon: InstagramIcon },
-  { title: 'TikTok', href: 'https://facebook.com', icon: TikTokIcon },
+  {
+    title: 'Instagram',
+    href: 'https://www.instagram.com/mudapedia_digitalid',
+    icon: InstagramIcon,
+  },
+  {
+    title: 'TikTok',
+    href: 'https://www.tiktok.com/@mudapedia_digitalid',
+    icon: TikTokIcon,
+  },
   { title: 'X', href: 'https://github.com', icon: XIcon },
   { title: 'LinkTree', href: 'https://dribbble.com', icon: LinkTreeIcon },
 ]

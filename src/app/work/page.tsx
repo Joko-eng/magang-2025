@@ -10,14 +10,11 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-dark.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-dark.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-dark.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-dark.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-dark.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-dark.svg'
-import logoPhobia from '@/images/clients/phobia/logo-dark.svg'
-import logoUnseal from '@/images/clients/unseal/logo-dark.svg'
+import logoDbi from '@/images/clients/dbi/dbi-logo-ori-text-dark.svg'
+import logoPavo from '@/images/clients/pavo/pavo-logo-ori-text-dark.svg'
+import logoGasvin from '@/images/clients/gasvin/gasvin-logo-ori-text-dark.svg'
+import logoNagapara from '@/images/clients/nagapara/nagapara-logo-ori-text-dark.svg'
+
 import { formatDate } from '@/lib/formatDate'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
@@ -97,14 +94,10 @@ function CaseStudies({
 }
 
 const clients = [
-  ['Phobia', logoPhobia],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
+  ['Pavo Official', logoPavo],
+  ['Digital Blockchain Indonesia', logoDbi],
+  ['Gasvin Artha Suar', logoGasvin],
+  ['Nagapara', logoNagapara],
 ]
 
 function Clients() {
@@ -125,7 +118,12 @@ function Clients() {
             <li key={client} className="group">
               <FadeIn className="overflow-hidden">
                 <Border className="pt-12 group-[&:nth-child(-n+2)]:-mt-px sm:group-[&:nth-child(3)]:-mt-px lg:group-[&:nth-child(4)]:-mt-px">
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image
+                    src={logo}
+                    alt={client}
+                    unoptimized
+                    className="h-full w-full"
+                  />
                 </Border>
               </FadeIn>
             </li>
@@ -162,10 +160,11 @@ export default async function Work() {
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Mail Smirk', logo: logoMailSmirk }}
+        client={{ name: 'Rafif Muhammad M.R', logo: logoPavo }}
       >
-        We approached <em>Studio</em> because we loved their past work. They
-        delivered something remarkably similar in record time.
+        We approached <em>Mudapedia</em> because we were impressed by their
+        expertise in Web3 and blockchain. They delivered a seamless,
+        high-performance solution that exceeded our expectations in no time.
       </Testimonial>
 
       <Clients />
