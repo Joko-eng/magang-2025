@@ -9,9 +9,9 @@ const navigation = [
   {
     title: 'Work',
     links: [
-      { title: 'FamilyFund', href: '/work/family-fund' },
-      { title: 'Unseal', href: '/work/unseal' },
-      { title: 'Phobia', href: '/work/phobia' },
+      { title: 'Pavo Official', href: '/work/pavo-coin' },
+      { title: 'DBI', href: '/work/dbi' },
+      { title: 'Gasvin', href: '/work/gasvin' },
       {
         title: (
           <>
@@ -25,9 +25,10 @@ const navigation = [
   {
     title: 'Company',
     links: [
+      { title: 'Work', href: '/work' },
       { title: 'About', href: '/about' },
       { title: 'Process', href: '/process' },
-      { title: 'Blog', href: '/blog' },
+      { title: 'Pricing', href: '/pricing' },
       { title: 'Contact us', href: '/contact' },
     ],
   },
