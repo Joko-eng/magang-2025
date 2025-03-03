@@ -192,13 +192,14 @@ export default async function About() {
             Mudapedia was founded by a team passionate about blockchain and
             digital transformation. We saw the need for a smarter, more
             efficient way to bridge businesses with decentralized technology.
-            From the start, we've been committed to delivering impactful
+            From the start, we&apos;ve been committed to delivering impactful
             solutions that drive real change.
           </p>
           <p>
-            We’re more than just a team we’re a community. We value creativity,
-            dedication, and the power of shared knowledge. At Mudapedia, we
-            don't just build projects we build the future, together.
+            We&apos;re more than just a team we&apos;re a community. We value
+            creativity, dedication, and the power of shared knowledge. At
+            Mudapedia, we don&apos;t just build projects we build the future,
+            together.
           </p>
         </div>
       </PageIntro>

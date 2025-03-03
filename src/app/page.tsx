@@ -31,7 +31,7 @@ function Clients() {
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We've partnered with countless innovative minds to bring Web3,
+            We&apos;ve partnered with countless innovative minds to bring Web3,
             blockchain, and crypto solutions to life.
           </h2>
           <div className="h-px flex-auto bg-neutral-100" />
