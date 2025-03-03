@@ -17,8 +17,8 @@ export function Logomark({
       <Image
         src={logoMudapedia || '/placeholder.svg'}
         alt="Mudapedia Logo"
-        width={130}
-        height={130}
+        width={140}
+        height={140}
         className={clsx(
           'transition-all duration-300',
           invert ? 'brightness-0 invert' : '',
@@ -28,7 +28,6 @@ export function Logomark({
   )
 }
 
-// The Logo component now combines the "M" logo with the text SVG
 export function Logo({
   className,
   invert = false,
