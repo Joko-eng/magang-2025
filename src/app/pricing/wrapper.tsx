@@ -66,7 +66,7 @@ export default function PricingComponent() {
             <RadioGroup
               value={frequency}
               onChange={setFrequency}
-              className="grid grid-cols-5 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200"
+              className="grid grid-cols-5 gap-x-1 rounded-full p-1 text-center text-[10px] font-semibold leading-5 ring-1 ring-inset ring-gray-200 lg:text-xs"
             >
               {frequencies.map((option) => (
                 <RadioGroup.Option
