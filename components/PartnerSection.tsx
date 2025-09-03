@@ -41,13 +41,13 @@ function PartnerSection() {
     },
     {
       src: "/image/nagapara.png",
-      alt: "Nagapoin",
-      label: "Nagapoin",
+      alt: "Nagapara",
+      label: "Nagapara",
     },
     {
       src: "/image/gasvin.png",
-      alt: "Gaswin Acha Suar",
-      label: "Gaswin Acha Suar",
+      alt: "Gaswin Artha Suar",
+      label: "Gaswin Artha Suar",
     },
   ];
 
