@@ -1,12 +1,14 @@
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
+import PartnerSection from "@/components/PartnerSection";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-    <Navbar />
-    <HeroSection />
+      <Navbar />
+      <HeroSection />
+      <PartnerSection />
     </>
   );
 }

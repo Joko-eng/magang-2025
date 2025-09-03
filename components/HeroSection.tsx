@@ -20,7 +20,7 @@ function HeroSection() {
       </div>
 
       {/* Hero Content */}
-      <main className="relative z-10 flex flex-col justify-start min-h-[70vh] container mx-auto px-4 sm:px-6 text-left pt-24 sm:pt-32 lg:pt-40">
+      <main className="relative z-10 flex flex-col justify-start min-h-[70vh] container mx-auto px-4 sm:px-6 text-left pt-36 sm:pt-40 lg:pt-52">
         <div className="max-w-2xl space-y-6">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
             Kecepatan dalam Industri Web3,
@@ -37,27 +37,6 @@ function HeroSection() {
           </Button>
         </div>
       </main>
-
-      {/* Partner Logos */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-12">
-        {[
-          { src: "/image/dbi.png", alt: "Digital Blockchain Indonesia", label: "Digital Blockchain Indonesia" },
-          { src: "/image/pavo.png", alt: "Official Pavo", label: "Official Pavo" },
-          { src: "/image/nagapara.png", alt: "Nagapoin", label: "Nagapoin" },
-          { src: "/image/gasvin.png", alt: "Gaswin Acha Suar", label: "Gaswin Acha Suar" },
-        ].map((partner) => (
-          <div key={partner.label} className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
-            <Image
-              src={partner.src}
-              alt={partner.alt}
-              width={32}
-              height={32}
-              className="w-6 sm:w-8 h-auto"
-            />
-            <p className="text-gray-300 text-xs sm:text-sm text-center sm:text-left">{partner.label}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
