@@ -1,11 +1,11 @@
 import HeroSection from "@/components/HeroSection";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <>
-    <div>Dzulpa</div>
-    <Button variant="secondary">Ahay</Button>
+    <Navbar />
     <HeroSection />
     </>
   );
