@@ -1,7 +1,8 @@
-import ContentSection from "@/components/about";
+import About from "@/components/about";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import PartnerSection from "@/components/PartnerSection";
+import Team from "@/components/Team";
 import Image from "next/image";
 
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <PartnerSection />
-      <ContentSection/>
+      <About/>
+      <Team/>
     </>
   );
 }
