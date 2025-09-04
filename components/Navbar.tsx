@@ -9,10 +9,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +22,10 @@ export default function Navbar() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -81,9 +87,22 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Button className="hidden xl:flex bg-blue-600 hover:bg-blue-700 rounded-full px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105">
-          Hubungi Kami
-        </Button>
+        <div className="hidden xl:flex items-center space-x-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="text-white hover:bg-white/10 rounded-full p-2 transition-all duration-200 hover:scale-105"
+            aria-label="Toggle theme"
+          >
+            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          </Button>
+
+          <Button className="bg-blue-600 hover:bg-blue-700 rounded-full px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105">
+            Hubungi Kami
+          </Button>
+        </div>
 
         <Button
           variant="ghost"
@@ -119,6 +138,22 @@ export default function Navbar() {
             aria-label="Close menu"
           >
             <X size={28} />
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className={`absolute top-6 right-20 text-white p-3 hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110 transform ${
+              isMenuOpen
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: "150ms" }}
+            aria-label="Toggle theme"
+          >
+            <Sun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
 
           <div className="mb-12 transform transition-all duration-700 delay-200">
