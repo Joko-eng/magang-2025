@@ -1,9 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { useState } from "react";
+import CardPagination from "./CardPagination";
 
 export default function Team() {
+  const [filter, setFilter] = useState<"all" | "tim" | "magang">("all");
+
   return (
     <section className="py-10 md:py-26">
       <div className="mx-auto max-w-5xl px-6">
@@ -17,42 +20,52 @@ export default function Team() {
           <p className="mt-4">
             Bersatu dalam visi, beragam dalam karya. Tim Mudapedia hadir untuk
             menghadirkan pengetahuan, kreativitas, dan solusi digital bagi
-            generasi muda Indonesia.
+            generasi muda Indonesia.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          {/* Filter buttons */}
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Button
-              asChild
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 rounded-full"
+              onClick={() => setFilter("all")}
+              className={`rounded-full ${
+                filter === "all"
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-gray-200 text-black"
+              }`}
             >
-              <Link href="/">
-                <span>Semua</span>
-              </Link>
+              Semua
             </Button>
 
             <Button
-              asChild
               size="lg"
-              variant="outline"
-              className="rounded-full"
+              onClick={() => setFilter("tim")}
+              className={`rounded-full ${
+                filter === "tim"
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-gray-200 text-black"
+              }`}
             >
-              <Link href="/">
-                <span>Tim</span>
-              </Link>
+              Tim
             </Button>
 
             <Button
-              asChild
               size="lg"
-              variant="outline"
-              className="rounded-full"
+              onClick={() => setFilter("magang")}
+              className={`rounded-full ${
+                filter === "magang"
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-gray-200 text-black"
+              }`}
             >
-              <Link href="/">
-                <span>Magang</span>
-              </Link>
+              Magang
             </Button>
           </div>
+        </div>
+
+        {/* Swipe Cards */}
+        <div className="mt-6 flex justify-center">
+          <CardPagination filter={filter} />
         </div>
       </div>
     </section>
