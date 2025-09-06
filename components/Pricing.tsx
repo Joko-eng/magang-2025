@@ -65,13 +65,16 @@ export default function PricingPage() {
       <div className="flex justify-center gap-3 mb-8">
         {networks.map((net) => (
           <Button
-            key={net}
-            variant={activeNetwork === net ? "default" : "outline"}
-            onClick={() => setActiveNetwork(net)}
-            className="rounded-full"
-          >
-            {net}
-          </Button>
+  key={net}
+  variant={activeNetwork === net ? "default" : "outline"}
+  onClick={() => setActiveNetwork(net)}
+  className={`rounded-full 
+    ${activeNetwork === net 
+      ? "bg-primary text-white dark:bg-primary dark:text-white" 
+      : "bg-background text-foreground dark:bg-primary/20 dark:text-white"}`}
+>
+  {net}
+</Button>
         ))}
       </div>
 
