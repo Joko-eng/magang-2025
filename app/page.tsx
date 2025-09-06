@@ -1,7 +1,9 @@
+import Footer from "@/components/Footer";
 import GaleriSection from "@/components/GaleriSection";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import PartnerSection from "@/components/PartnerSection";
+import PricingPage from "@/components/Pricing";
 
 export default function Home() {
   return (
@@ -9,7 +11,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <PartnerSection />
+      <PricingPage/>
       <GaleriSection />
+      <Footer/>
     </>
   );
 }
