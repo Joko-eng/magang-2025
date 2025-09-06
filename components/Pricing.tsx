@@ -62,26 +62,32 @@ export default function PricingPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       {/* Tabs */}
-      <div className="flex justify-center gap-3 mb-8">
-        {networks.map((net) => (
-          <Button
-  key={net}
-  variant={activeNetwork === net ? "default" : "outline"}
-  onClick={() => setActiveNetwork(net)}
-  className={`rounded-full 
-    ${activeNetwork === net 
-      ? "bg-primary text-white dark:bg-primary dark:text-white" 
-      : "bg-background text-foreground dark:bg-primary/20 dark:text-white"}`}
->
-  {net}
-</Button>
-        ))}
-      </div>
+      <div className="flex justify-center gap-3 mb-8 px-4 sm:px-0">
+  {networks.map((net) => (
+    <Button
+      key={net}
+      variant={activeNetwork === net ? "default" : "outline"}
+      onClick={() => setActiveNetwork(net)}
+      className={`w-auto px-4 rounded-full 
+        ${
+          activeNetwork === net
+            ? "bg-primary text-white dark:bg-primary dark:text-white"
+            : "bg-background text-foreground dark:bg-primary/20 dark:text-white"
+        }`}
+    >
+      {net}
+    </Button>
+  ))}
+</div>
+
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {packages.map((pkg, idx) => (
-          <Card key={idx} className="bg-primary text-white shadow-xl rounded-2xl">
+          <Card
+            key={idx}
+            className="bg-primary text-white shadow-xl rounded-2xl"
+          >
             <CardHeader>
               <CardTitle className="text-center text-xl font-semibold">
                 {pkg.name}
@@ -92,7 +98,9 @@ export default function PricingPage() {
               <p className="text-center text-2xl font-bold mb-2">{pkg.price}</p>
               <p className="text-center mb-4">/proyek</p>
               <div className="flex justify-center mb-6">
-                <Button variant="secondary" className="rounded-full text-white">Beli Paket</Button>
+                <Button variant="secondary" className="rounded-full text-white">
+                  Beli Paket
+                </Button>
               </div>
               <ul className="space-y-2 text-sm">
                 {pkg.features.map((feature, i) => (
