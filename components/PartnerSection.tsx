@@ -20,9 +20,9 @@ const PartnerCard = ({
         height={20}
         className="w-8 sm:w-6 md:w-8 h-auto flex-shrink-0"
       />
-      <p className="text-gray-900 text-xs sm:text-sm md:text-base text-center sm:text-left whitespace-nowrap mt-auto sm:mt-0">
-        {label}
-      </p>
+    <p className="text-gray-900 dark:text-white text-xs sm:text-sm md:text-base text-center sm:text-left whitespace-nowrap mt-auto sm:mt-0">
+  {label}
+</p>
     </div>
   );
 };
