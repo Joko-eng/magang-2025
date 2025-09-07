@@ -11,7 +11,7 @@ export default function Team() {
     <section className="py-10 md:py-26">
       <div className="mx-auto max-w-5xl px-6 dark:text-white">
         <div className="text-center">
-          <p className="py-4 text-center text-lg font-medium lg:text-xl">
+          <p className="py-4 text-center text-lg font-medium lg:text-xl text-primary dark:text-white">
             Tim Kami
           </p>
           <h2 className="text-balance text-2xl font-semibold lg:text-2xl">

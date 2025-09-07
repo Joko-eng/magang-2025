@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section id="tentang" className="py-10 md:py-26">
       <div className="mx-auto max-w-5xl space-y-8 px-4 md:space-y-16">
-        <h3 className="text-center z-10 text-2xl font-semibold lg:text-2xl dark:text-white">
+        <h3 className="text-center z-10 text-2xl font-semibold lg:text-2xl text-primary dark:text-white">
           Tentang Kami
         </h3>
         <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
