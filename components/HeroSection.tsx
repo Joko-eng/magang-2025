@@ -32,7 +32,7 @@ function HeroSection() {
             Tim kami membangun solusi inovatif yang membantu bisnis berkembang
             di dunia desentralisasi.
           </p>
-          <Button className="bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base">
+          <Button className="bg-primary dark:bg-primary dark:text-white hover:bg-blue-700 px-4 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base">
             Gabung Sekarang
           </Button>
         </div>

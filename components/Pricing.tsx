@@ -20,7 +20,7 @@ export default function PricingPage() {
             className={`px-4 rounded-full transition-all duration-200 ${
               activeNetwork === net
                 ? "bg-primary text-primary-foreground hover:bg-primary/90 border-primary dark:text-white"
-                : "bg-white text-white dark:text-black dark:bg-white hover:bg-white dark:hover:bg-white"
+                : "bg-white text-primary dark:text-black dark:bg-white hover:bg-white dark:hover:bg-white"
             }`}
           >
             {net}
