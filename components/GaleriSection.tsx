@@ -1,56 +1,74 @@
 "use client";
 import React from "react";
-
-const galeris = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-  },
-];
+import { ExternalLink } from "lucide-react";
 
 export default function GaleriSection() {
+  const instagramPosts = [
+    "https://www.instagram.com/p/DODQS-qEl4K/",
+    "https://www.instagram.com/p/DN76Dcokuel/",
+    "https://www.instagram.com/p/DN7tIIrkZK_/",
+    "https://www.instagram.com/p/DNxwj9A5Ltc/",
+    "https://www.instagram.com/p/DNpnFHAy52o/",
+  ];
+
+  const bukaPost = (postUrl: string) => {
+    window.open(postUrl, "_blank");
+  };
+
+  const getThumbnail = (postUrl: string) => {
+    const thumbnails = [
+      "/thumbnail/one.png",
+      "/thumbnail/two.png",
+      "/thumbnail/three.png",
+      "/thumbnail/five.png",
+      "/thumbnail/six.png",
+    ];
+
+    const index = instagramPosts.indexOf(postUrl);
+    return thumbnails[index] || thumbnails[0];
+  };
+
+  const bentoLayout = [
+    { span: "col-span-2 row-span-2", index: 0 },
+    { span: "col-span-1 row-span-1", index: 2 },
+    { span: "col-span-1 row-span-2", index: 1 },
+    { span: "col-span-1 row-span-1", index: 3 },
+    { span: "col-span-1 row-span-1", index: 4 },
+  ];
+
   return (
-    <>
-      <div>
-        <h1 className=" text-xl text-blue-600 text-center font-bold">Galeri</h1>
+    <div className="pt-6">
+      <div className="mb-6">
+        <h1 className="text-xl text-blue-600 dark:text-blue-400 text-center font-bold">
+          Galeri Instagram
+        </h1>
       </div>
-      <div className="grid grid-cols-3 mt-4 gap-1">
-        {galeris.map((galeri) => (
-          <div key={galeri.id} className="aspect-square overflow-hidden">
-            <img
-              src={galeri.image}
-              alt={`Galeri ${galeri.id}`}
-              className="w-full h-full object-cover hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-            />
-          </div>
-        ))}
+
+      <div className="grid grid-cols-3 grid-rows-3 gap-2 mb-6 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] px-12 sm:px-14 md:px-16">
+        {bentoLayout.map((item, layoutIndex) => {
+          const postUrl = instagramPosts[item.index];
+          return (
+            <div
+              key={layoutIndex}
+              className={`${item.span} relative cursor-pointer rounded-lg overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:z-10`}
+              onClick={() => bukaPost(postUrl)}
+            >
+              <img
+                src={getThumbnail(postUrl)}
+                alt={`Post Instagram ${item.index + 1}`}
+                className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
+              />
+
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 flex items-center gap-2 text-white font-medium text-sm">
+                  <span>Lihat Postingan</span>
+                  <ExternalLink size={16} />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }
