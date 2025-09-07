@@ -1,4 +1,5 @@
 import About from "@/components/about";
+import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import GaleriSection from "@/components/GaleriSection";
 import HeroSection from "@/components/HeroSection";
@@ -17,7 +18,7 @@ export default function Home() {
       <GaleriSection />
       <About/>
       <Team/>
-
+<Faq/>
       <Footer/>
     </>
   );
