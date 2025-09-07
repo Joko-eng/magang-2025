@@ -1,3 +1,4 @@
+import About from "@/components/about";
 import Footer from "@/components/Footer";
 import GaleriSection from "@/components/GaleriSection";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +14,9 @@ export default function Home() {
       <PartnerSection />
       <PricingPage/>
       <GaleriSection />
+      <About/>
+      <Team/>
+
       <Footer/>
     </>
   );
