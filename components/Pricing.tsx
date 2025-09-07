@@ -9,7 +9,7 @@ export default function PricingPage() {
   const [activeNetwork, setActiveNetwork] = useState<Network>("SOLANA");
 
   return (
-    <div className="p-6 max-w-7xl mx-auto bg-transparant text-white transition-colors duration-300 rounded-2xl shadow-lg">
+    <div id="harga" className="p-6 max-w-7xl mx-auto bg-transparant text-white transition-colors duration-300 rounded-2xl shadow-lg">
       {/* Tabs */}
       <div className="flex justify-center gap-3 mb-8 px-4 sm:px-0 flex-wrap">
         {networks.map((net) => (
@@ -37,7 +37,7 @@ export default function PricingPage() {
           >
             <CardHeader className="text-center">
               <CardTitle className="text-xl dark:text-white font-bold">{pkg.name}</CardTitle>
-              <p className="text-white dark:text-whitee mt-2">{pkg.desc}</p>
+              <p className="text-white dark:text-white mt-2">{pkg.desc}</p>
             </CardHeader>
             <CardContent className="text-center">
               <div className="mb-6">
