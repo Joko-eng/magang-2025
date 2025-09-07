@@ -99,7 +99,7 @@ export default function Navbar() {
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
 
-          <Button className="bg-blue-600 hover:bg-blue-700 rounded-full px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105">
+          <Button className="bg-primary hover:bg-blue-700 dark:text-white rounded-full px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105">
             Hubungi Kami
           </Button>
         </div>

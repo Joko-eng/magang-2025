@@ -9,7 +9,7 @@ export default function Team() {
 
   return (
     <section className="py-10 md:py-26">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 dark:text-white">
         <div className="text-center">
           <p className="py-4 text-center text-lg font-medium lg:text-xl">
             Tim Kami
@@ -28,10 +28,10 @@ export default function Team() {
             <Button
               size="lg"
               onClick={() => setFilter("all")}
-              className={`rounded-full ${
+              className={`rounded-full border ${
                 filter === "all"
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "bg-gray-200 text-black"
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 border-primary dark:text-white"
+                  : "bg-white text-black dark:text-black dark:bg-white hover:bg-white dark:hover:bg-white border-gray-300"
               }`}
             >
               Semua
@@ -40,10 +40,10 @@ export default function Team() {
             <Button
               size="lg"
               onClick={() => setFilter("tim")}
-              className={`rounded-full ${
+              className={`rounded-full border ${
                 filter === "tim"
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "bg-gray-200 text-black"
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 border-primary dark:text-white"
+                  : "bg-white text-black dark:text-black dark:bg-white hover:bg-white dark:hover:bg-white border-gray-300"
               }`}
             >
               Tim
@@ -52,10 +52,10 @@ export default function Team() {
             <Button
               size="lg"
               onClick={() => setFilter("magang")}
-              className={`rounded-full ${
+              className={`rounded-full border ${
                 filter === "magang"
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "bg-gray-200 text-black"
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 border-primary dark:text-white"
+                  : "bg-white text-black dark:text-black dark:bg-white hover:bg-white dark:hover:bg-white border-gray-300"
               }`}
             >
               Magang
