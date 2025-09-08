@@ -58,8 +58,8 @@ const teamData: TeamCardType[] = [
     name: "Joko",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "http://www.linkedin.com/in/mohamadjoko",
-    instagram: "https://www.instagram.com/joko.kk/",
+    linkedin: "#",
+    instagram: "#",
   },
   {
     id: 7,
@@ -74,16 +74,16 @@ const teamData: TeamCardType[] = [
     name: "Zulfa",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "https://www.linkedin.com/in/zulfa-ramadani-a47118276",
-    instagram: "https://www.instagram.com/rm.zlfa?igsh=MTlvb3kwMjRydTd6aQ==",
+    linkedin: "#",
+    instagram: "#",
   },
   {
     id: 9,
     name: "Jenny",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "https://www.linkedin.com/in/jenny-nur-alfian-handayani-90ba1a290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    instagram: "https://www.instagram.com/jennynrl_?igsh=c2o0OGUyMXFiN2lu",
+    linkedin: "#",
+    instagram: "#",
   },
   {
     id: 10,
@@ -98,24 +98,24 @@ const teamData: TeamCardType[] = [
     name: "Filfia",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "https://www.linkedin.com/in/filfia-antika-andriana-86b4a1319/",
-    instagram: "https://www.instagram.com/filfia.an26_?igsh=MTZodGZyOWY4cGx4MQ%3D%3D&utm_source=qr",
+    linkedin: "#",
+    instagram: "#",
   },
   {
     id: 12,
     name: "Gita",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "https://www.linkedin.com/in/gita-karisma-596777236",
-    instagram: "https://www.instagram.com/_gitakarisma/",
+    linkedin: "#",
+    instagram: "#",
   },
   {
     id: 13,
     name: "Wulan",
     role: "Internship",
     image: "/image/iqbal.png",
-    linkedin: "https://www.linkedin.com/in/putriwulann?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    instagram: "https://www.instagram.com/putriwulannss?igsh=aThnb21ib3RuMzl6&utm_source=qr",
+    linkedin: "#",
+    instagram: "#",
   },
 ];
 
@@ -124,8 +124,8 @@ const magangIds = [6, 7, 8, 9, 10, 11, 12, 13];
 
 function TeamCard({ card }: { card: TeamCardType }) {
   return (
-    <div className="flex-shrink-0 snap-center basis-full sm:basis-1/2 md:basis-1/3 xl:basis-1/4 px-3">
-      <div className="w-full h-[420px] bg-primary text-primary-foreground hover:bg-primary/90 dark:text-white rounded-[120px] shadow-xl flex flex-col items-center overflow-hidden">
+    <div className="flex-shrink-0 snap-center basis-full max-w-64 px-3">
+      <div className="w-full h-[420px] bg-blue-600 text-white rounded-[120px] shadow-xl flex flex-col items-center overflow-hidden">
         {/* Nama & Role */}
         <div className="pt-5 text-center z-10">
           <h2 className="text-lg font-semibold">{card.name}</h2>
@@ -184,17 +184,16 @@ export default function CardPagination({
       ? teamData.filter((d) => magangIds.includes(d.id))
       : teamData;
 
-  const totalPages = Math.ceil(filteredData.length / 4);
+  const totalPages = Math.ceil(filteredData.length / 5);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollLeft = 0;
     setActiveIndex(0);
   }, [filter]);
 
-  // Drag pakai mouse (hanya aktif kalau > 4 item)
+  // Drag + update activeIndex saat scroll
   useEffect(() => {
     if (filteredData.length <= 4) return;
-
     const slider = scrollRef.current;
     if (!slider) return;
 
@@ -204,17 +203,14 @@ export default function CardPagination({
       scrollLeft.current = slider.scrollLeft;
       slider.classList.add("cursor-grabbing");
     };
-
     const mouseLeave = () => {
       isDown.current = false;
       slider.classList.remove("cursor-grabbing");
     };
-
     const mouseUp = () => {
       isDown.current = false;
       slider.classList.remove("cursor-grabbing");
     };
-
     const mouseMove = (e: MouseEvent) => {
       if (!isDown.current) return;
       e.preventDefault();
@@ -223,36 +219,29 @@ export default function CardPagination({
       slider.scrollLeft = scrollLeft.current - walk;
     };
 
+    const handleScroll = () => {
+      const cardWidth = slider.querySelector("div")?.clientWidth || 1;
+      const index = Math.round(slider.scrollLeft / cardWidth / 5);
+      setActiveIndex(index);
+    };
+
     slider.addEventListener("mousedown", mouseDown);
     slider.addEventListener("mouseleave", mouseLeave);
     slider.addEventListener("mouseup", mouseUp);
     slider.addEventListener("mousemove", mouseMove);
+    slider.addEventListener("scroll", handleScroll);
 
     return () => {
       slider.removeEventListener("mousedown", mouseDown);
       slider.removeEventListener("mouseleave", mouseLeave);
       slider.removeEventListener("mouseup", mouseUp);
       slider.removeEventListener("mousemove", mouseMove);
+      slider.removeEventListener("scroll", handleScroll);
     };
-  }, [filteredData]);
-
-  useEffect(() => {
-    const slider = scrollRef.current;
-    if (!slider) return;
-
-    const onScroll = () => {
-      const cardWidth = slider.clientWidth;
-      const index = Math.round(slider.scrollLeft / cardWidth);
-      setActiveIndex(index);
-    };
-
-    slider.addEventListener("scroll", onScroll);
-    return () => slider.removeEventListener("scroll", onScroll);
   }, [filteredData]);
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Kalau item <= 4 → tampil grid */}
       {filteredData.length <= 4 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-4 py-8 w-full">
           {filteredData.map((card) => (
@@ -264,14 +253,14 @@ export default function CardPagination({
           {/* Carousel */}
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-8 scrollbar-hide select-none cursor-grab"
+            className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 py-8 scrollbar-hide select-none cursor-grab"
             style={{ minHeight: "450px" }}
           >
             {filteredData.map((card) => (
               <TeamCard key={card.id} card={card} />
             ))}
           </div>
-          
+
           {/* Pagination */}
           <div className="mt-4 flex gap-2">
             {Array.from({ length: totalPages }).map((_, idx) => (
