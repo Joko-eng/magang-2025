@@ -48,7 +48,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="#portfolio"
-                  className="text-white font-medium hover:text-blue-300 transition-colors duration-200 text-sm xl:text-base"
+                  className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Portofolio
                 </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="#proses"
-                  className="text-white font-medium hover:text-blue-300 transition-colors duration-200 text-sm xl:text-base"
+                  className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Proses Kami
                 </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="#harga"
-                  className="text-white font-medium hover:text-blue-300 transition-colors duration-200 text-sm xl:text-base"
+                  className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Harga
                 </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="#tentang"
-                  className="text-white font-medium hover:text-blue-300 transition-colors duration-200 text-sm xl:text-base"
+                  className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Tentang Kami
                 </Link>
