@@ -148,7 +148,7 @@ function TeamCard({ card }: { card: TeamCardType }) {
             href={card.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-[#9990FF] hover:opacity-90 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-full bg-secondary hover:opacity-90 transition"
           >
             <FaLinkedin size={16} />
           </a>
@@ -156,7 +156,7 @@ function TeamCard({ card }: { card: TeamCardType }) {
             href={card.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-[#9990FF] hover:opacity-90 transition"
+            className="w-9 h-9 flex items-center justify-center rounded-full bg-secondary hover:opacity-90 transition"
           >
             <FaInstagram size={16} />
           </a>
@@ -277,7 +277,7 @@ export default function CardPagination({
               <div
                 key={idx}
                 className={`w-3 h-3 rounded-full transition ${
-                  activeIndex === idx ? "bg-blue-600" : "bg-gray-300"
+                  activeIndex === idx ? "bg-primary" : "bg-gray-300"
                 }`}
               />
             ))}
