@@ -17,7 +17,7 @@ const teamData: TeamCardType[] = [
     id: 1,
     name: "Iqbal",
     role: "Backend Developer",
-    image: "/image/iqbal.png",
+    image: "/Tim/Iqbal2.png",
     linkedin:
       "https://www.linkedin.com/in/muhammad-iqbal-12779934a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/iq_over",
@@ -26,7 +26,7 @@ const teamData: TeamCardType[] = [
     id: 2,
     name: "Theo",
     role: "Frontend Developer",
-    image: "/image/iqbal.png",
+    image: "/Tim/theo.png",
     linkedin:
       "https://www.linkedin.com/in/theo-fillus-julianta-guritno-6a37b3298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/theofilluz",
@@ -35,7 +35,7 @@ const teamData: TeamCardType[] = [
     id: 3,
     name: "Dzanu",
     role: "UI/UX Designer",
-    image: "/image/iqbal.png",
+    image: "/Tim/janu.png",
     linkedin:
       "https://www.linkedin.com/in/fildzanu-ridwan-574938382?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/fildzanu?igsh=MXczM2Z6c2Z2ampiaw==",
@@ -44,7 +44,7 @@ const teamData: TeamCardType[] = [
     id: 4,
     name: "Reza",
     role: "Project Manager",
-    image: "/image/iqbal.png",
+    image: "/Tim/reza.png",
     linkedin:
       "https://www.linkedin.com/in/reza-maulana-22ba09382?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/reza04.__",
@@ -53,7 +53,7 @@ const teamData: TeamCardType[] = [
     id: 5,
     name: "Gilang",
     role: "DevOps Engineer",
-    image: "/image/iqbal.png",
+    image: "/Tim/gilang.png",
     linkedin:
       "https://www.linkedin.com/in/gilang-arista-rachman-840795314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "#",
@@ -163,7 +163,7 @@ function TeamCard({ card }: { card: TeamCardType }) {
         </div>
 
         {/* Foto */}
-        <div className="relative mt-auto w-full h-[270px]">
+        <div className="relative mt-auto flex justify-center items-end w-full h-[270px]">
           <img
             src={card.image}
             alt={card.name}
