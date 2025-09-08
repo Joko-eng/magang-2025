@@ -20,11 +20,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Mudapedia",
-  description: "Mudapedia digital indonesia",
+export const metadata = {
+  title: "Mudapedia Digital Indonesia",
+  description:
+    "Discover the journey behind Mudapedia Digital Indonesia — how we started, our passion for design, and our mission to empower your ideas with stunning visuals.",
+  keywords: [
+    "Mudapedia Digital Indonesia",
+    "Our Story",
+    "Digital Blockchain",
+    "Web3 Development",
+   
+  ],
+  authors: [{ name: "Mudapedia Digital Indonesia", url: "" }],
+ 
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
