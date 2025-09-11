@@ -60,9 +60,10 @@ export default function GaleriSection() {
               />
 
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 flex items-center gap-2 text-white font-medium text-sm">
-                  <span>Lihat Postingan</span>
-                  <ExternalLink size={16} />
+                <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 flex items-center gap-1 sm:gap-2 text-white font-medium text-xs sm:text-sm">
+                  <span className="hidden sm:inline">Lihat Postingan</span>
+                  <span className="sm:hidden">Lihat</span>
+                  <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
               </div>
             </div>
