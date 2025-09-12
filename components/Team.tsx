@@ -8,7 +8,7 @@ export default function Team() {
   const [filter, setFilter] = useState<"all" | "tim" | "magang">("all");
 
   return (
-    <section className="py-10 md:py-26">
+    <section id="tim" className="py-10 md:py-26">
       <div className="mx-auto max-w-5xl px-6 dark:text-white">
         <div className="text-center">
           <p className="py-4 text-center text-lg font-medium lg:text-xl text-primary dark:text-white">

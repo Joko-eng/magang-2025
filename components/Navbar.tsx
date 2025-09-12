@@ -47,20 +47,20 @@ export default function   Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#portfolio"
+                  href="#tim"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
-                  Portofolio
+                  Tim Kami
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#proses"
+                  href="#galeri"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
-                  Proses Kami
+                  Galeri
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -169,7 +169,7 @@ export default function   Navbar() {
 
           <nav className="flex flex-col items-center space-y-8">
             <Link
-              href="#portfolio"
+              href="#tim"
               className={`text-white text-2xl font-medium hover:text-blue-300 transition-all duration-300 hover:scale-110 transform ${
                 isMenuOpen
                   ? "translate-y-0 opacity-100"
@@ -178,10 +178,10 @@ export default function   Navbar() {
               style={{ transitionDelay: "300ms" }}
               onClick={closeMenu}
             >
-              Portofolio
+              Tim Kami
             </Link>
             <Link
-              href="#proses"
+              href="#galeri"
               className={`text-white text-2xl font-medium hover:text-blue-300 transition-all duration-300 hover:scale-110 transform ${
                 isMenuOpen
                   ? "translate-y-0 opacity-100"
@@ -190,7 +190,7 @@ export default function   Navbar() {
               style={{ transitionDelay: "400ms" }}
               onClick={closeMenu}
             >
-              Proses Kami
+              Galeri
             </Link>
             <Link
               href="#harga"

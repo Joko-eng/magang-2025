@@ -37,7 +37,7 @@ export default function GaleriSection() {
   ];
 
   return (
-    <div className="pt-6">
+    <div id="galeri" className="pt-6">
       <div className="mb-6">
         <h1 className="text-xl text-blue-600 dark:text-blue-400 text-center font-bold">
           Galeri Instagram
