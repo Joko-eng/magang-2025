@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
@@ -8,6 +9,12 @@ export default function About() {
         <h3 className="text-center z-10 text-2xl font-semibold lg:text-2xl text-primary dark:text-white">
           Tentang Kami
         </h3>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}>
         <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
           <div className="relative mb-6 sm:mb-0">
             <div className="bg-linear-to-b aspect-76/59 relative rounded-2xl from-zinc-300 to-transparent p-px dark:from-zinc-700">
@@ -31,14 +38,18 @@ export default function About() {
           </div>
 
           <div className="relative space-y-2 text-center sm:text-justify">
-            <span className="text-accent-foreground font-semibold dark:text-white">Visi</span>
+            <span className="text-accent-foreground font-semibold dark:text-white">
+              Visi
+            </span>
             <p className="text-foreground dark:text-white">
               Kami menjadi Perusahaan Digital Agency yang terdepan dalam
               membantu para pebisnis mengembangkan usahanya
             </p>
 
             <div className="pt-3">
-              <span className="text-foreground font-semibold dark:text-white">Misi</span>
+              <span className="text-foreground font-semibold dark:text-white">
+                Misi
+              </span>
               <p className="text-foreground dark:text-white">
                 Memahami bahwa era digital telah membuka pintu menuju peluang
                 yang tak terbatas, dan kami hadir sebagai solusi yang cerdas dan
@@ -50,6 +61,8 @@ export default function About() {
             </div>
           </div>
         </div>
+          </motion.div>
+
       </div>
     </section>
   );

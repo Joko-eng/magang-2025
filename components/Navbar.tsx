@@ -12,7 +12,7 @@ import {
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function Navbar() {
+export default function   Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
