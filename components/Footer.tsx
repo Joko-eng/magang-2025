@@ -80,10 +80,10 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#portfolio"
+                href="#tim"
                 className="hover:text-blue-600 dark:hover:text-blue-400 text-sm"
               >
-                Portofolio
+                Tim Kami
               </Link>
             </li>
             <li>
