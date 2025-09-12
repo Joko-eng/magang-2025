@@ -24,7 +24,7 @@ function HeroSection() {
      
       <main className="relative z-10 flex flex-col justify-start min-h-[70vh] container mx-auto px-4 sm:px-6 text-left pt-36 sm:pt-40 lg:pt-52">
       <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
