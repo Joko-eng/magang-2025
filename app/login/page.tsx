@@ -29,7 +29,7 @@ export default function LoginWithBeams() {
                       type="email"
                       id="email"
                       placeholder="fulan@gmail.com"
-                      className="pl-10"
+                      className="pl-10 dark:bg-white text-black"
                     />
                   </div>
                 </div>
@@ -43,7 +43,7 @@ export default function LoginWithBeams() {
                       type="password"
                       id="password"
                       placeholder="Password"
-                      className="pl-10"
+                      className="pl-10 dark:bg-white text-black"
                     />
                   </div>
                 </div>
