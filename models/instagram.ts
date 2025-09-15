@@ -3,6 +3,7 @@ import { models, Schema, model } from 'mongoose';
 
 const userSchema = new Schema<IPostInstagrams>(
   {
+    title: { type: String, required: true },
     thumbnail: { type: String, required: true },
     url: { type: String, required: true },
   },
