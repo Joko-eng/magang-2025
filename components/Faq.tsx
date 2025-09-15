@@ -13,7 +13,14 @@ export default function FAQ() {
         {
             id: 'item-2',
             question: 'Layanan apa saja yang ditawarkan?',
-            answer: 'We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For enterprise customers, we also offer invoicing options.',
+            answer: (
+                <ul className="list-disc pl-5 space-y-2">
+                    <li>Pengembangan Aplikasi Mobile: Android & iOS (native atau cross-platform).</li>
+                    <li>Pengembangan Website: E-commerce, company profile, portofolio, dan lainnya.</li>
+                    <li>Digital Marketing: SEO, SEM, Social Media Management, hingga Content Creation.</li>
+                    <li>Konsultasi Digital: Analisis kebutuhan & strategi digitalisasi bisnis.</li>
+                </ul>
+            ),
         },
         {
             id: 'item-3',
