@@ -94,24 +94,13 @@ const galeris = [
 export default function Galeri() {
   return (
     <>
-      <div>
-        <h1 className=" text-3xl text-blue-600 text-center font-bold">
+      <div className="py-4">
+        <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-600 text-center font-bold">
           Galeri Instagram
         </h1>
       </div>
-      <div className="max-w-md mx-8 justify-center">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-60 pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
-          />
-          <button className="absolute top-1/2 transform -translate-y-1/2">
-            <Search className="w-4 h-4 text-gray-400" />
-          </button>
-        </div>
-      </div>
-      <div className="grid grid-cols-6 mt-4 gap-x-8 gap-y-20">
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4 gap-x-8 gap-y-20 px-6">
         {galeris.map((galeri) => (
           <div key={galeri.id}>
             <div className="aspect-square overflow-hidden">
