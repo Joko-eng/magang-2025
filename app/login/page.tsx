@@ -13,14 +13,12 @@ export default function LoginWithBeams() {
     <div className="fixed inset-0 overflow-hidden">
       <BackgroundBeamsWithCollision>
         <div className="flex items-center justify-center w-full h-full px-4 sm:px-6">
-          {/* Card Login */}
           <Card className="w-full max-w-[380px] rounded-2xl shadow-lg bg-white/90 backdrop-blur-md relative z-20">
             <CardHeader className="text-center">
               <CardTitle className="text-xl font-semibold">Login</CardTitle>
             </CardHeader>
             <CardContent>
               <form className="space-y-4">
-                {/* Email */}
                 <div className="grid w-full max-w-sm gap-2">
                   <Label htmlFor="email">Email</Label>
                   <div className="relative">
@@ -34,7 +32,6 @@ export default function LoginWithBeams() {
                   </div>
                 </div>
 
-                {/* Password */}
                 <div className="grid w-full max-w-sm gap-2">
                   <Label htmlFor="password">Password</Label>
                   <div className="relative">
@@ -48,7 +45,7 @@ export default function LoginWithBeams() {
                   </div>
                 </div>
 
-                {/* Remember + Forgot */}
+              
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="remember" />
@@ -60,13 +57,10 @@ export default function LoginWithBeams() {
                     Forgot Password?
                   </a>
                 </div>
-
-                {/* Login button */}
                 <Button className="w-full bg-primary hover:bg-blue-500 dark:bg-primary text-white rounded-lg">
                   Login
                 </Button>
 
-                {/* Divider */}
                 <div className="flex items-center my-2">
                   <div className="flex-1 h-px bg-gray-300" />
                   <span className="px-2 text-xs text-gray-400">
@@ -75,7 +69,6 @@ export default function LoginWithBeams() {
                   <div className="flex-1 h-px bg-gray-300" />
                 </div>
 
-                {/* Social Login */}
                 <div className="flex justify-center gap-4">
                   <Button
                     variant="outline"

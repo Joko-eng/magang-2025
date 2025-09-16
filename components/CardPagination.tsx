@@ -17,7 +17,7 @@ const teamData: TeamCardType[] = [
     id: 1,
     name: "Iqbal",
     role: "Backend Developer",
-    image: "/Tim/Iqbal2.png",
+    image: "/Tim/Iqbal.png",
     linkedin:
       "https://www.linkedin.com/in/muhammad-iqbal-12779934a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/iq_over",
@@ -70,7 +70,7 @@ const teamData: TeamCardType[] = [
     id: 7,
     name: "Izza",
     role: "Internship",
-    image: "/image/iqbal.png",
+    image: "/Tim/ijat.png",
     linkedin: "https://www.linkedin.com/in/muhammad-izza-fakhrul-anam",
     instagram: "https://www.instagram.com/zaa.fn_",
   },
@@ -95,7 +95,7 @@ const teamData: TeamCardType[] = [
     id: 10,
     name: "Feni",
     role: "Internship",
-    image: "/image/iqbal.png",
+    image: "/Tim/feni.png",
     linkedin: "https://www.linkedin.com/in/feni-eldiana-59237b2b5/",
     instagram:
       "https://www.instagram.com/fenieldd?igsh=MWtkOGU5MWxtamZweg%3D%3D&utm_source=qr",
@@ -113,7 +113,7 @@ const teamData: TeamCardType[] = [
     id: 12,
     name: "Gita",
     role: "Internship",
-    image: "/image/iqbal.png",
+    image: "/Tim/gita.png",
     linkedin: "https://www.linkedin.com/in/gita-karisma-596777236",
     instagram: "https://www.instagram.com/_gitakarisma/",
   },
@@ -121,7 +121,7 @@ const teamData: TeamCardType[] = [
     id: 13,
     name: "Wulan",
     role: "Internship",
-    image: "/image/iqbal.png",
+    image: "/Tim/wulan.png",
     linkedin:
       "https://www.linkedin.com/in/putriwulann?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     instagram:
