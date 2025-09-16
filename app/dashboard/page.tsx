@@ -70,15 +70,15 @@ const Dashboard: React.FC = () => {
         </div>
         <Card className="p-4 mb-4 dark:bg-primary">
           <div className="flex flex-col md:grid md:grid-cols-4 md:items-center gap-4">
-            {/* Left: Thumbnail */}
+            
             <div className="flex justify-center items-center mb-3 md:mb-0">
               <div className="w-24 aspect-square flex items-center justify-center rounded-md bg-blue-50">
-                {/* Kalau ada gambar bisa taruh <img> di sini */}
+               
                 <Camera className="w-8 h-8 text-blue-500" />
               </div>
             </div>
 
-            {/* Middle: Title + Link */}
+            
             <div className="md:col-span-2 gap-2 p-2 rounded-md flex flex-col justify-center">
               <h2 className="font-semibold text-base text-center md:text-left dark:text-white">
                 Mudapedia Lomba Agustusan
@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: Actions */}
+            
             <div className="flex justify-center md:justify-end mt-3 md:mt-0">
               <div className="flex items-center gap-3 px-4 py-2 rounded-md">
                 <Button className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600">
