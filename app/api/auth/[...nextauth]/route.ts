@@ -4,8 +4,6 @@ import { connectDB } from "@/lib/connectDB";
 import { User } from "@/models/Users";
 import { loginSchema } from "@/lib/validation-auth";
 import { ZodError } from "zod";
-
-// Extend the Session type to include user.id
 import type { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
