@@ -9,15 +9,15 @@ const AuthOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username', type: 'text' },
+        email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials: Record<'username' | 'password', string> | undefined) {
-        if (!credentials?.username || !credentials?.password) return null;
+      async authorize(credentials: Record<'email' | 'password', string> | undefined) {
+        if (!credentials?.email || !credentials?.password) return null;
 
         await connectDB();
 
-        const user = await User.findOne({ username: credentials.username });
+        const user = await User.findOne({ email: credentials.email });
         if (!user) return null;
 
         const isValid = await bcrypt.compare(credentials.password, user.password);
@@ -25,7 +25,7 @@ const AuthOptions: NextAuthOptions = {
 
         return {
           id: user._id.toString(),
-          username: user.username,
+          email: user.email,
           
         };
       },

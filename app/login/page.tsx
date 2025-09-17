@@ -1,14 +1,47 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Lock } from "lucide-react";
-import { FaApple, FaTwitter, FaFacebook, FaGoogle } from "react-icons/fa";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
-export default function LoginWithBeams() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+     setError("");
+    setSuccess("");
+  
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+       if (!res.ok) {
+        setError(data.message || "Login gagal!");
+      } else {
+        setSuccess("Login berhasil!");
+        // Simpan token ke localStorage / cookie
+        localStorage.setItem("token", data.data.token);
+
+        // redirect contoh
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
+  };
   return (
     <div className="fixed inset-0 overflow-hidden">
       <BackgroundBeamsWithCollision>
@@ -18,7 +51,7 @@ export default function LoginWithBeams() {
               <CardTitle className="text-xl font-semibold">Login</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid w-full max-w-sm gap-2">
                   <Label htmlFor="email">Email</Label>
                   <div className="relative">
@@ -27,6 +60,7 @@ export default function LoginWithBeams() {
                       type="email"
                       id="email"
                       placeholder="fulan@gmail.com"
+                      onChange={(e) => setEmail(e.target.value)}
                       className="pl-10 dark:bg-white text-black"
                     />
                   </div>
@@ -40,6 +74,7 @@ export default function LoginWithBeams() {
                       type="password"
                       id="password"
                       placeholder="Password"
+                       onChange={(e) => setPassword(e.target.value)}
                       className="pl-10 dark:bg-white text-black"
                     />
                   </div>
@@ -57,27 +92,12 @@ export default function LoginWithBeams() {
                     Forgot Password?
                   </a>
                 </div>
-                <Button className="w-full bg-primary hover:bg-blue-500 dark:bg-primary text-white rounded-lg">
+                <Button 
+                type="submit"
+                className="w-full bg-primary hover:bg-blue-500 dark:bg-primary text-white rounded-lg">
                   Login
                 </Button>
 
-                {/* <div className="flex items-center my-2">
-                  <div className="flex-1 h-px bg-gray-300" />
-                  <span className="px-2 text-xs text-gray-400">
-                    Or Login With
-                  </span>
-                  <div className="flex-1 h-px bg-gray-300" />
-                </div>
-
-                <div className="flex justify-center gap-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full"
-                  >
-                    <FaGoogle className="h-5 w-5" />
-                  </Button>
-                </div> */}
               </form>
             </CardContent>
           </Card>
