@@ -81,7 +81,6 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all text-gray-700 dark:rotate-0 dark:scale-100" />
             </Button>
 
-            {/* Tombol User */}
             <button
               onClick={() => setOpen(!open)}
               className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"

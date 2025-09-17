@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarLayout from "@/components/layouts/navbar-layouts";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   BookText,
   Camera,
@@ -30,6 +31,23 @@ const Dashboard: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [judul, setJudul] = useState("");
   const [link, setLink] = useState("");
+  const [posts, setPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch("/api/post-instagram"); // sesuaikan endpoint kamu
+        const data = await res.json();
+        if (data?.postInstagrams) {
+          setPosts(data.postInstagrams);
+        }
+      } catch (err) {
+        console.error("Error fetching posts:", err);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -150,61 +168,76 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Contoh Card Post */}
-        <Card className="p-4 mb-4 dark:bg-primary">
-          <div className="flex flex-col md:grid md:grid-cols-4 md:items-center gap-4">
-            <div className="flex justify-center items-center mb-3 md:mb-0">
-                <Image className="w-24 aspect-square flex items-center justify-center rounded-md bg-blue-500"
-                  src={
-"https://images.unsplash.com/photo-1757609210893-fd6f38231542?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"                  }
-                  width={300} height={300}
-                  alt="Picture of the author"
+        {posts.map((post) => (
+          <Card key={post._id} className="p-4 mb-4 dark:bg-primary">
+            <div className="flex flex-col md:grid md:grid-cols-4 md:items-center gap-4">
+              <div className="flex justify-center items-center mb-3 md:mb-0">
+                <Image
+                  className="w-24 aspect-square flex items-center justify-center rounded-md bg-blue-500"
+                  src={post.thumbnail}
+                  width={300}
+                  height={300}
+                  alt={post.title}
                 />
-              
-            </div>
+              </div>
 
-            <div className="md:col-span-2 gap-2 p-2 rounded-md flex flex-col justify-center">
-              <h2 className="font-semibold text-base text-center md:text-left dark:text-white">
-                Mudapedia Lomba Agustusan
-              </h2>
-              <div className="flex items-center mt-2">
-                <input
-                  type="text"
-                  value="https://www.instagram.com/p/DOnRIcaEtzq/"
-                  readOnly
-                  className="text-xs sm:text-sm border rounded-md px-3 py-1 bg-blue-50 text-gray-600 w-full"
-                />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="ml-2 hover:bg-gray-100"
-                >
-                  <Copy className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="ml-2 hover:bg-gray-100"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </Button>
+              <div className="md:col-span-2 gap-2 p-2 rounded-md flex flex-col justify-center">
+                <h2 className="font-semibold text-base text-center md:text-left dark:text-white">
+                  {post.title}
+                </h2>
+                <div className="flex items-center mt-2">
+                  <input
+                    type="text"
+                    value={post.url}
+                    readOnly
+                    className="text-xs sm:text-sm border rounded-md px-3 py-1 bg-blue-50 text-gray-600 w-full"
+                  />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="ml-2 hover:bg-gray-100"
+                    onClick={() => {
+                      try {
+                        navigator.clipboard.writeText(post.url);
+                        toast.success("URL berhasil disalin!", {
+                          description: post.url,
+                        });
+                      } catch (err) {
+                        toast.error("Gagal menyalin URL", {
+                          description: String(err),
+                        });
+                      }
+                    }}
+                  >
+                    <Copy className="w-4 h-4 dark:text-white" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="ml-2 hover:bg-gray-100"
+                    onClick={() => window.open(post.url, "_blank")}
+                  >
+                    <ExternalLink className="w-4 h-4 dark:text-white" />
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex justify-center md:justify-end mt-3 md:mt-0">
+                <div className="flex items-center gap-3 px-4 py-2 rounded-md">
+                  <Button className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600">
+                    <Trash2 className="w-4 h-4" />
+                    Delete
+                  </Button>
+
+                  <Button className="flex items-center gap-2 text-white bg-primary hover:bg-blue-600">
+                    <Edit2 className="w-4 h-4" />
+                    Edit
+                  </Button>
+                </div>
               </div>
             </div>
-
-            <div className="flex justify-center md:justify-end mt-3 md:mt-0">
-              <div className="flex items-center gap-3 px-4 py-2 rounded-md">
-                <Button className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600">
-                  <Trash2 className="w-4 h-4" />
-                  Delete
-                </Button>
-
-                <Button className="flex items-center gap-2 text-white bg-primary hover:bg-blue-600">
-                  <Edit2 className="w-4 h-4" />
-                  Edit
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Card>
+          </Card>
+        ))}
       </div>
     </NavbarLayout>
   );
