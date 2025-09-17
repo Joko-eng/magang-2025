@@ -57,7 +57,7 @@ export default function   Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#galeri"
+                  href="/galeri"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Galeri

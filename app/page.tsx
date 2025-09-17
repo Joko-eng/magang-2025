@@ -11,7 +11,6 @@ import Team from "@/components/Team";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <PartnerSection />
       <PricingPage/>
@@ -19,7 +18,6 @@ export default function Home() {
       <Team/>
       <GaleriSection />
       <FAQ/>
-      <Footer/>
     </>
   );
 }
