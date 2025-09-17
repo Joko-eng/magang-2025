@@ -1,7 +1,7 @@
 import { IAdmins } from '@/types/schemaAdminsType';
 import { models, Schema, model } from 'mongoose';
 
-const userSchema = new Schema<IAdmins>(
+const adminSchema = new Schema<IAdmins>(
   {
     username: { type: String, required: true },
     password: { type: String, required: true },
@@ -10,4 +10,4 @@ const userSchema = new Schema<IAdmins>(
 );
 
 const adminModelName = 'Admin';
-export const Admins = models[adminModelName] || model<IAdmins>(adminModelName, userSchema);
+export const Admins = models[adminModelName] || model<IAdmins>(adminModelName, adminSchema);
