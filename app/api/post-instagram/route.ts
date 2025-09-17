@@ -23,6 +23,8 @@ export const POST = async (req: Request) => {
 
 export const GET = async () => {
   try {
+    await connectDB();
+
     const response = await PostInstagrams.find();
 
     if (!response) {

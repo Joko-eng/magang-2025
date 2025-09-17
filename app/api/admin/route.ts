@@ -21,13 +21,14 @@ export const POST = async (req: Request) => {
 
 export const GET = async () => {
   try {
+    await connectDB();
     const response = await Admins.find();
 
     if (!response) {
       throw new Error('Failed while fetching from database.');
     }
 
-    return NextResponse.json({ message: 'success', admins: response });
+    return NextResponse.json({ message: 'success', response });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: (error as Error).message }, { status: 500 });
