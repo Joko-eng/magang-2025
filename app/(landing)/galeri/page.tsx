@@ -94,7 +94,7 @@ const galeris = [
 export default function Galeri() {
   return (
     <>
-      <div className="flex items-center justify-between px-8 py-6 mt-20">
+      <div className="flex items-center justify-between px-8 py-6 mt-24">
         <h1 className="absolute left-1/2 transform -translate-x-1/2 text-xl md:text-2xl lg:text-3xl text-primary font-bold dark:text-white">
           Galeri Instagram
         </h1>
@@ -104,7 +104,7 @@ export default function Galeri() {
         <div className="relative w-[500px]">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Cari..."
             className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
           />
           <button className="absolute right-3 top-1/2 transform -translate-y-1/2">

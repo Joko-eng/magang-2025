@@ -61,7 +61,7 @@ export default function LoginWithBeams() {
                   Login
                 </Button>
 
-                <div className="flex items-center my-2">
+                {/* <div className="flex items-center my-2">
                   <div className="flex-1 h-px bg-gray-300" />
                   <span className="px-2 text-xs text-gray-400">
                     Or Login With
@@ -77,7 +77,7 @@ export default function LoginWithBeams() {
                   >
                     <FaGoogle className="h-5 w-5" />
                   </Button>
-                </div>
+                </div> */}
               </form>
             </CardContent>
           </Card>

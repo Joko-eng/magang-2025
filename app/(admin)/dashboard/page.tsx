@@ -66,7 +66,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <NavbarLayout>
+    <>
       <div className="py-6 px-14">
         <div className="flex justify-end items-center mb-6 sm:items-end">
           <Dialog
@@ -239,7 +239,7 @@ const Dashboard: React.FC = () => {
           </Card>
         ))}
       </div>
-    </NavbarLayout>
+      </>
   );
 };
 

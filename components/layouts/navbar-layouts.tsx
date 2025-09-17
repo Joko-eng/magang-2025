@@ -16,7 +16,7 @@ interface NavbarLayoutProps {
   children: ReactNode;
 }
 
-const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
+export default function NavbarLayout() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { theme, setTheme } = useTheme();
@@ -38,8 +38,7 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
   return (
-    <div className="min-h-screen bg-gray-200">
-      {/* Navbar */}
+
     <nav className="bg-white dark:bg-primary border-b border-gray-200 px-4 py-3 shadow-md transition-colors">
 
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -107,10 +106,6 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="flex-1">{children}</main>
-    </div>
   );
 };
 
-export default NavbarLayout;
