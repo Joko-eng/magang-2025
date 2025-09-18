@@ -25,7 +25,8 @@ const galeris = [
     id: 3,
     image:
       "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop",
-    tittle: "Mudapediaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    tittle:
+      "Mudapediaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     href: "#",
   },
   {
@@ -127,11 +128,11 @@ export default function Galeri() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end text-center sm:text-left p-3 sm:p-4">
-              <h3 className="font-semibold text-white text-sm sm:text-lg mb-2 break-words max-w-full">
-                {galeri.tittle}
-              </h3>
-              <div className="flex justify-center sm:justify-end">
-                <Link href={galeri.href}>
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
+                <h3 className="font-semibold text-white text-sm sm:text-lg mb-2 sm:mb-0 max-w-full truncate sm:line-clamp-2 sm:overflow-hidden sm:text-ellipsis">
+                  {galeri.tittle}
+                </h3>
+                <Link href={galeri.href} className="sm:ml-2">
                   <Button className="w-full sm:w-auto font-medium text-white text-xs sm:text-sm bg-primary hover:bg-primary/80 px-4 py-2 whitespace-nowrap">
                     Lihat Postingan
                   </Button>
