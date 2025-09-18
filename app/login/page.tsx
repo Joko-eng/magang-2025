@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,40 +9,61 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Lock } from "lucide-react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // ✅ redirect hanya sekali setelah user authenticated
+  useEffect(() => {
+    if (status === "authenticated" && session) {
+      router.push("/dashboard");
+    }
+  }, [status, session, router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     setError("");
-    setSuccess("");
-  
+    setError("");
+    setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
       });
 
-      const data = await res.json();
-       if (!res.ok) {
-        setError(data.message || "Login gagal!");
-      } else {
-        setSuccess("Login berhasil!");
-        // Simpan token ke localStorage / cookie
-        localStorage.setItem("token", data.data.token);
-
-        // redirect contoh
-        window.location.href = "/dashboard";
+      if (result?.error) {
+        setError(result.error);
+      } else if (result?.ok) {
+        await getSession();
+        router.push("/dashboard");
       }
-    } catch (error) {
-      console.error("Login error:", error);
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+
+  // ⏳ loading state
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  // 🚫 jika sudah login, jangan render halaman login
+  if (status === "authenticated") return null;
+
   return (
     <div className="fixed inset-0 overflow-hidden">
       <BackgroundBeamsWithCollision>
@@ -60,6 +82,7 @@ export default function Login() {
                       type="email"
                       id="email"
                       placeholder="fulan@gmail.com"
+                      value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="pl-10 dark:bg-white text-black"
                     />
@@ -74,13 +97,13 @@ export default function Login() {
                       type="password"
                       id="password"
                       placeholder="Password"
-                       onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="pl-10 dark:bg-white text-black"
                     />
                   </div>
                 </div>
 
-              
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="remember" />
@@ -92,12 +115,18 @@ export default function Login() {
                     Forgot Password?
                   </a>
                 </div>
-                <Button 
-                type="submit"
-                className="w-full bg-primary hover:bg-blue-500 dark:bg-primary text-white rounded-lg">
-                  Login
-                </Button>
 
+                {error && (
+                  <p className="text-red-500 text-sm text-center">{error}</p>
+                )}
+
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-blue-500 dark:bg-primary text-white rounded-lg"
+                  disabled={loading}
+                >
+                  {loading ? "Logging in..." : "Login"}
+                </Button>
               </form>
             </CardContent>
           </Card>

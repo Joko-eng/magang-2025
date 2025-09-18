@@ -1,9 +1,9 @@
 import { connectDB } from "@/lib/connectDB";
 import { errorResponse, successResponse } from "@/lib/response-api";
 import { Instagram } from "@/models/instagram";
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await connectDB();
 
@@ -12,16 +12,9 @@ export async function GET(req: NextRequest) {
       .sort({ createdAt: -1 })
       .lean();
 
-    const transformedPosts = posts.map((post) => ({
-      id: post._id,
-      title: post.title,
-      thumbnail: post.thumbnail,
-      url: post.url,
-    }));
-
     return NextResponse.json(
       successResponse(
-        { posts: transformedPosts, totalPosts: transformedPosts.length },
+        { posts: posts, totalPosts: posts.length },
         "Data Berhasil Diambil!"
       ),
       { status: 200 }
@@ -34,3 +27,4 @@ export async function GET(req: NextRequest) {
     });
   }
 }
+

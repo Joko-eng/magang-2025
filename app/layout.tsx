@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-providers";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,32 +30,28 @@ export const metadata = {
     "Our Story",
     "Digital Blockchain",
     "Web3 Development",
-   
   ],
   authors: [{ name: "Mudapedia Digital Indonesia", url: "" }],
- 
 };
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          
-        </ThemeProvider>
-        <Toaster position="top-right" richColors />
-
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster position="top-right" richColors />
+        </Providers>
       </body>
     </html>
   );
