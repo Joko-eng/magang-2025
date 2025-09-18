@@ -1,5 +1,5 @@
-import { IInstagram } from "@/types/schemaInstagramType";
 import { model, models, Schema } from "mongoose";
+import { IInstagram } from "@/types/schemaTypes";
 
 const instagramSchema: Schema<IInstagram> = new Schema(
   {
@@ -13,7 +13,14 @@ const instagramSchema: Schema<IInstagram> = new Schema(
     thumbnail: {
       type: String,
       required: [true, "Thumbnail wajib diisi"],
-      match: [/^https?:\/\/.+\.(jpg|jpeg|png|webp)$/i, "Thumbnail harus berupa URL gambar yang valid"],
+      match: [
+        /^https?:\/\/.+\.(jpg|jpeg|png|webp)$/i,
+        "Thumbnail harus berupa URL gambar yang valid",
+      ],
+    },
+    thumbnailVersion: {
+      type: String,
+      required: [true, "Thumbnail version wajib diisi"],
     },
     url: {
       type: String,
@@ -33,5 +40,8 @@ const instagramSchema: Schema<IInstagram> = new Schema(
 
 instagramSchema.index({ userId: 1, createdAt: -1 });
 
-const instagramModelName = 'Instagram';
-export const Instagram = models[instagramModelName] || model<IInstagram>(instagramModelName, instagramSchema);
+const INSTAGRAM_MODEL_NAME = "Instagram";
+
+export const Instagram =
+  models[INSTAGRAM_MODEL_NAME] ||
+  model<IInstagram>(INSTAGRAM_MODEL_NAME, instagramSchema);

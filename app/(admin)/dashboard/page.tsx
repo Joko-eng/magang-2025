@@ -144,7 +144,7 @@ const Dashboard: React.FC = () => {
               Coba Lagi
             </Button>
             <Button 
-              onClick={() => window.open('/api/post-instagram', '_blank')}
+              onClick={() => window.open('/api/instagram', '_blank')}
               variant="outline"
             >
               Test API

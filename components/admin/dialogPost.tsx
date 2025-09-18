@@ -49,9 +49,9 @@ const CreatePostDialog: React.FC<CreatePostDialogProps> = ({ open, onOpenChange,
       const formData = new FormData();
       formData.append("title", judul);
       formData.append("url", link);
-      formData.append("thumbnail", file);
+      formData.append("file", file);
 
-      const res = await axios.post("/api/auth/post-instagram", formData, {
+      const res = await axios.post("/api/instagram", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

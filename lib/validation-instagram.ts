@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = [
@@ -6,7 +6,7 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/jpg",
   "image/png",
   "image/webp",
-];
+] as const;
 
 export const instagramSchema = z.object({
   title: z

@@ -1,31 +1,27 @@
-import mongooseModule from 'mongoose';
+import mongooseModule from "mongoose";
 
 const MONGODB_URL = process.env.MONGODB_URL;
 
 if (!MONGODB_URL) {
-  throw new Error('Please define the MONGODB_URL environment variable');
+  throw new Error("Please define the MONGODB_URL environment variable");
 }
 
 const url: string = MONGODB_URL;
 
+interface MongooseCache {
+  conn: typeof mongooseModule | null;
+  promise: Promise<typeof mongooseModule> | null;
+}
+
 declare global {
-  var mongoose:
-    | {
-        conn: typeof mongooseModule | null;
-        promise: Promise<typeof mongooseModule> | null;
-      }
-    | undefined;
+  var mongoose: MongooseCache | undefined;
 }
 
 const globalWithMongoose = global as typeof globalThis & {
-  mongoose?: {
-    conn: typeof mongooseModule | null;
-    promise: Promise<typeof mongooseModule> | null;
-  };
+  mongoose?: MongooseCache;
 };
 
 export async function connectDB() {
-  // initialize if not defined
   if (!globalWithMongoose.mongoose) {
     globalWithMongoose.mongoose = {
       conn: null,
@@ -46,6 +42,6 @@ export async function connectDB() {
   }
 
   cached.conn = await cached.promise;
-  console.log('connected to DB!');
+  console.log("Connected to DB!");
   return cached.conn;
 }

@@ -1,58 +1,33 @@
-import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary, UploadApiOptions, UploadApiResponse } from "cloudinary";
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+type CloudinaryMethod = "UPLOAD" | "UPDATE";
 
-export interface CloudinaryUploadResult {
-  public_id: string;
-  secure_url: string;
-  width: number;
-  height: number;
-  format: string;
-  resource_type: string;
-  created_at: string;
-  bytes: number;
-}
+const cloudinaryImageHandler = async (
+  method: CloudinaryMethod,
+  file: Blob,
+  fileName?: string
+): Promise<UploadApiResponse> => {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const base64 = buffer.toString("base64");
+  const dataUri = `data:${file?.type};base64,${base64}`;
+  const folder = process.env.CLOUDINARY_PATH;
 
-export async function uploadToCloudinary(
-  fileBuffer: Buffer,
-  fileName: string,
-  folder: string = "testing"
-): Promise<CloudinaryUploadResult> {
-  return new Promise((resolve, reject) => {
-    cloudinary.uploader
-      .upload_stream(
-        {
-          resource_type: "auto",
-          folder: folder,
-          public_id: `${folder}/${Date.now()}-${fileName}`,
-          transformation: [
-            { quality: "auto" },
-            { format: "auto" },
-          ],
-        },
-        (error, result) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(result as CloudinaryUploadResult);
-          }
-        }
-      )
-      .end(fileBuffer);
-  });
-}
+  const options: UploadApiOptions = {
+    overwrite: true,
+    invalidate: true,
+    resource_type: "image",
+    use_filename: false,
+    unique_filename: !fileName,
+    folder,
+  };
 
-export async function deleteFromCloudinary(publicId: string): Promise<void> {
-  try {
-    await cloudinary.uploader.destroy(publicId);
-  } catch (error) {
-    console.error("Error deleting from cloudinary: ", error);
-    throw error;
+  if (fileName) {
+    options.public_id = fileName;
   }
-}
 
-export default cloudinary;
+  const response = await cloudinary.uploader.upload(dataUri, options);
+
+  return response;
+};
+
+export default cloudinaryImageHandler;
