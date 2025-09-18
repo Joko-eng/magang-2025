@@ -28,6 +28,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import CreatePostDialog from "@/components/admin/dialogPost";
 
 const Dashboard: React.FC = () => {
   const { data: session, status } = useSession();
@@ -61,16 +62,7 @@ const Dashboard: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      
-      // console.log("Session:", session);
-      
-      // const res = await fetch("/api/instagram", {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   credentials: 'include',
-      // });
+     
 
       const res = await axios.get("/api/instagram")
       
@@ -79,17 +71,6 @@ const Dashboard: React.FC = () => {
         setPosts(res.data?.data?.posts)
       }
         
-      
-    
-      
-      // const data = await res.json();
-      // console.log("API Response:", data);
-      
-      // if (data?.data?.po) {
-      //   setPosts(data?.data?.posts);
-      // } else {
-      //   setPosts([]);
-      // }
     } catch (err) {
       console.error("Fetch error:", err);
       const errorMessage = err instanceof Error ? err.message : String(err);
@@ -177,103 +158,21 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <div className="py-6 px-14">
-        <div className="flex justify-end items-center mb-6 sm:items-end">
-          <Dialog
-            open={isDialogOpen}
-            onOpenChange={(open) => {
-              setIsDialogOpen(open);
-              if (!open) {
-                handleCloseDialog();
-              }
-            }}
-          >
-            <DialogTrigger asChild>
-              <Button
-                className="flex items-center gap-2 bg-primary hover:bg-blue-500 text-white"
-                onClick={() => setIsDialogOpen(true)}
-              >
-                <Plus size={16} />
-                <span className="text-sm font-medium">Tambah Baru</span>
-              </Button>
-            </DialogTrigger>
+      <div className="flex justify-end items-center mb-6 sm:items-end">
+  <Button
+    className="flex items-center gap-2 bg-primary hover:bg-blue-500 text-white"
+    onClick={() => setIsDialogOpen(true)}
+  >
+    <Plus size={16} />
+    <span className="text-sm font-medium">Tambah Baru</span>
+  </Button>
 
-            <DialogContent className="sm:max-w-lg dark:text-white">
-              <DialogHeader>
-                <DialogTitle>Tambah Postingan Baru</DialogTitle>
-                <DialogDescription>
-                  Isi form berikut untuk menambahkan postingan baru.
-                </DialogDescription>
-              </DialogHeader>
-
-              <form className="space-y-4">
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="foto"
-                    className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden"
-                  >
-                    {previewImage ? (
-                      <img
-                        src={previewImage}
-                        alt="Preview"
-                        className="object-cover w-full h-full"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <Camera className="w-8 h-8 text-blue-500 mb-2" />
-                        <p className="text-sm text-gray-500">
-                          Tambahkan foto disini
-                        </p>
-                      </div>
-                    )}
-                    <input
-                      id="foto"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="hidden"
-                    />
-                  </label>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="judul">Judul Postingan</Label>
-                  <Input
-                    id="judul"
-                    placeholder="Masukkan judul"
-                    value={judul}
-                    onChange={(e) => setJudul(e.target.value)}
-                    className="dark:bg-white"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="link">Link</Label>
-                  <Input
-                    id="link"
-                    placeholder="Masukkan link"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
-                    className="dark:bg-white"
-                  />
-                </div>
-
-                <div className="flex justify-end gap-6 mt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="text-red-400 dark:bg-red-500 dark:text-white"
-                    onClick={handleCloseDialog}
-                  >
-                    Batal
-                  </Button>
-                  <Button type="submit" className="bg-blue-500 text-white">
-                    Simpan
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
-        </div>
+  <CreatePostDialog
+    open={isDialogOpen}
+    onOpenChange={setIsDialogOpen}
+    onSuccess={fetchPosts} // refresh list setelah tambah
+  />
+</div>
 
         {/* Posts */}
         {posts.length === 0 ? (
