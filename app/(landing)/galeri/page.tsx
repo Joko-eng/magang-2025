@@ -44,8 +44,6 @@ export default function Galeri() {
     fetchData();
   }, []);
 
-  const galeris = posts;
-
   return (
     <div className="">
       <div className="px-4 py-10 mt-16">
