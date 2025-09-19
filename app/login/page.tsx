@@ -20,7 +20,7 @@ export default function Login() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  // ✅ redirect hanya sekali setelah user authenticated
+
   useEffect(() => {
     if (status === "authenticated" && session) {
       router.push("/dashboard");
