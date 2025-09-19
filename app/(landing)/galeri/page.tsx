@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import next from "next";
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import axios from "axios";

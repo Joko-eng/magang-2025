@@ -61,25 +61,25 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  // const handleDelete = async (id: string) => {
-  //   if (!confirm("Apakah yakin ingin menghapus post ini?")) return;
+  const handleDelete = async (id: string) => {
+    if (!confirm("Apakah yakin ingin menghapus post ini?")) return;
 
-  //   try {
-  //    const res = await axios.delete(`/api/instagram/${id}/delete`);
+    try {
+     const res = await axios.delete(`/api/instagram/delete?id=${id}`);
 
-  //     if (res.status === 200) {
-  //       toast.success("Post berhasil dihapus!");
-  //       fetchPosts(); // refresh list setelah delete
-  //     } else {
-  //       toast.error(res.data?.message || "Gagal menghapus post");
-  //     }
-  //   } catch (err: any) {
-  //     console.error("Delete error:", err);
-  //     toast.error("Terjadi kesalahan saat menghapus post", {
-  //       description: err?.response?.data?.message || err.message,
-  //     });
-  //   }
-  // };
+      if (res.status === 200) {
+        toast.success("Post berhasil dihapus!");
+        fetchPosts(); // refresh list setelah delete
+      } else {
+        toast.error(res.data?.message || "Gagal menghapus post");
+      }
+    } catch (err: any) {
+      console.error("Delete error:", err);
+      toast.error("Terjadi kesalahan saat menghapus post", {
+        description: err?.response?.data?.message || err.message,
+      });
+    }
+  };
 
   // Loading state untuk session
   if (status === "loading") {
@@ -224,7 +224,7 @@ const Dashboard: React.FC = () => {
                 <div className="flex justify-center md:justify-end mt-3 md:mt-0">
                   <div className="flex items-center gap-3 px-4 py-2 rounded-md">
                     <Button
-                      // onClick={() => handleDelete(post._id)}
+                      onClick={() => handleDelete(post._id)}
                       className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600"
                     >
                       <Trash2 className="w-4 h-4" />
