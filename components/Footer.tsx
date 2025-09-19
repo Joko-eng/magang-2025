@@ -39,7 +39,7 @@ export default function Footer() {
         {/* Kolom 2: Hubungi Kami */}
         <div>
           <h3 className="text-gray-900 dark:text-white font-semibold mb-3">
-            Hubungi Kami
+            Galeri
           </h3>
           <p className="text-sm">Telepon : 0838-6368-5661</p>
           <p className="text-sm">
@@ -96,10 +96,10 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#hubungi"
+                href="/galeri"
                 className="hover:text-blue-600 dark:hover:text-blue-400 text-sm"
               >
-                Hubungi Kami
+                Galeri
               </Link>
             </li>
           </ul>
