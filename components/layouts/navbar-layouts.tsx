@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
+import { signOut } from "next-auth/react";
 
 interface NavbarLayoutProps {
   children: ReactNode;
@@ -94,7 +95,7 @@ export default function NavbarLayout() {
             {open && (
               <div className="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
                 <button
-                  onClick={() => alert("Logout berhasil!")}
+                  onClick={() => signOut({ callbackUrl: "/login"})}
                   className="flex items-center w-full gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm"
                 >
                   <LogOut className="w-4 h-4" />

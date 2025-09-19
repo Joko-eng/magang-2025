@@ -9,6 +9,7 @@ import { Copy, Edit2, ExternalLink, Plus, Trash2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import CreatePostDialog from "@/components/admin/dialogPost";
+import EditPostDialog from "@/components/admin/dialogEdit";
 
 const Dashboard: React.FC = () => {
   const { data: session, status } = useSession();
@@ -19,6 +20,7 @@ const Dashboard: React.FC = () => {
   const [judul, setJudul] = useState("");
   const [link, setLink] = useState("");
   const [posts, setPosts] = useState<any[]>([]);
+  const [edit, setEdit] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,7 +67,7 @@ const Dashboard: React.FC = () => {
     if (!confirm("Apakah yakin ingin menghapus post ini?")) return;
 
     try {
-     const res = await axios.delete(`/api/instagram/delete?id=${id}`);
+      const res = await axios.delete(`/api/instagram/delete?id=${id}`);
 
       if (res.status === 200) {
         toast.success("Post berhasil dihapus!");
@@ -94,7 +96,7 @@ const Dashboard: React.FC = () => {
 
   // Tidak ada session
   if (!session) {
-    return null; 
+    return null;
   }
 
   // Loading posts
@@ -155,6 +157,18 @@ const Dashboard: React.FC = () => {
             onOpenChange={setIsDialogOpen}
             onSuccess={fetchPosts}
           />
+
+          {edit && (
+            <EditPostDialog
+              open={!!edit}
+              onOpenChange={() => setEdit(null)}
+              post={edit}
+              onSuccess={() => {
+                setEdit(null);
+                fetchPosts();
+              }}
+            />
+          )}
         </div>
 
         {posts.length === 0 ? (
@@ -231,7 +245,10 @@ const Dashboard: React.FC = () => {
                       Delete
                     </Button>
 
-                    <Button className="flex items-center gap-2 text-white bg-primary hover:bg-blue-600">
+                    <Button
+                      onClick={() => setEdit(post)}
+                      className="flex items-center gap-2 text-white bg-primary hover:bg-blue-600"
+                    >
                       <Edit2 className="w-4 h-4" />
                       Edit
                     </Button>

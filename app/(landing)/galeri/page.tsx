@@ -44,8 +44,6 @@ export default function Galeri() {
     fetchData();
   }, []);
 
-  const galeris = posts;
-
   return (
     <div className="">
       <div className="flex items-center justify-between px-4 sm:px-8 py-6 sm:py-10 mt-12 sm:mt-20">
