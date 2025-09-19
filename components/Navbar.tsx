@@ -12,7 +12,7 @@ import {
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function   Navbar() {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -27,19 +27,25 @@ export default function   Navbar() {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+  const toggleThemeMobile = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40">
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-12 py-4">
         <div className="flex-shrink-0">
-          <Image
-            src="/image/mudapedia-logo.png"
-            alt="Logo"
-            width={50}
-            height={50}
-            className="sm:w-16 h-auto"
-            priority
-          />
+          <Link href={"/"}>
+            <Image
+              src="/image/mudapedia-logo.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="sm:w-16 h-auto"
+              priority
+            />
+          </Link>
         </div>
 
         <NavigationMenu className="hidden lg:flex">
@@ -87,7 +93,7 @@ export default function   Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="hidden xl:flex items-center space-x-4">
+        {/* <div className="hidden xl:flex items-center space-x-4">
           <Button
             variant="ghost"
             size="icon"
@@ -102,7 +108,7 @@ export default function   Navbar() {
           <Button className="bg-primary hover:bg-blue-700 dark:text-white rounded-full px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105">
             Hubungi Kami
           </Button>
-        </div>
+        </div> */}
 
         <Button
           variant="ghost"
@@ -121,7 +127,7 @@ export default function   Navbar() {
         onClick={closeMenu}
       >
         <div
-          className={`flex flex-col items-center justify-center h-full w-full transition-all duration-500 transform relative ${
+          className={`bg-black/80 absolute top-0 left-0 h-screen flex flex-col items-center justify-center w-full transition-all duration-500 transform ${
             isMenuOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -143,7 +149,7 @@ export default function   Navbar() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={toggleTheme}
+            onClick={toggleThemeMobile}
             className={`absolute top-6 right-20 text-white p-3 hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110 transform ${
               isMenuOpen
                 ? "translate-y-0 opacity-100"
@@ -157,14 +163,16 @@ export default function   Navbar() {
           </Button>
 
           <div className="mb-12 transform transition-all duration-700 delay-200">
-            <Image
-              src="/image/mudapedia-logo.png"
-              alt="Logo"
-              width={100}
-              height={100}
-              className="opacity-90"
-              priority
-            />
+            <Link href={"/"}>
+              <Image
+                src="/image/mudapedia-logo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="opacity-90"
+                priority
+              />
+            </Link>
           </div>
 
           <nav className="flex flex-col items-center space-y-8">
@@ -181,7 +189,7 @@ export default function   Navbar() {
               Tim Kami
             </Link>
             <Link
-              href="#galeri"
+              href="/galeri"
               className={`text-white text-2xl font-medium hover:text-blue-300 transition-all duration-300 hover:scale-110 transform ${
                 isMenuOpen
                   ? "translate-y-0 opacity-100"
@@ -218,7 +226,7 @@ export default function   Navbar() {
             </Link>
           </nav>
 
-          <div
+          {/* <div
             className={`mt-12 transform transition-all duration-500 ${
               isMenuOpen
                 ? "translate-y-0 opacity-100"
@@ -230,9 +238,9 @@ export default function   Navbar() {
               className="bg-blue-600 hover:bg-blue-700 rounded-full px-8 py-4 text-lg font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
               onClick={closeMenu}
             >
-              Hubungi Kami
+              Hubungi
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

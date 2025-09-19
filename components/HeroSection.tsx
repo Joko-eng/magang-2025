@@ -21,31 +21,30 @@ function HeroSection() {
       </div>
 
       {/* Hero Content */}
-     
+
       <main className="relative z-10 flex flex-col justify-start min-h-[70vh] container mx-auto px-4 sm:px-6 text-left pt-36 sm:pt-40 lg:pt-52">
-      <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
         >
-        <div className="max-w-2xl space-y-6">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-            Kecepatan dalam Industri Web3,
-            <br /> Blockchain, dan Kripto.
-          </h1>
-          <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
-            Kami adalah perusahaan rintisan yang berada di jantung Web3,
-            blockchain, dan kripto, tempat teknologi dan kreativitas berpadu.
-            Tim kami membangun solusi inovatif yang membantu bisnis berkembang
-            di dunia desentralisasi.
-          </p>
-          <Button className="bg-primary dark:bg-primary dark:text-white hover:bg-blue-700 px-4 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base">
+          <div className="max-w-2xl space-y-6">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+              Kecepatan dalam Industri Web3,
+              <br /> Blockchain, dan Kripto.
+            </h1>
+            <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
+              Kami adalah perusahaan rintisan yang berada di jantung Web3,
+              blockchain, dan kripto, tempat teknologi dan kreativitas berpadu.
+              Tim kami membangun solusi inovatif yang membantu bisnis berkembang
+              di dunia desentralisasi.
+            </p>
+            {/* <Button className="bg-primary dark:bg-primary dark:text-white hover:bg-blue-700 px-4 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base">
             Gabung Sekarang
-          </Button>
-        </div>
-          </motion.div>
-
+          </Button> */}
+          </div>
+        </motion.div>
       </main>
     </div>
   );

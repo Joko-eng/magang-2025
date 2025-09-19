@@ -48,8 +48,8 @@ export default function Galeri() {
 
   return (
     <div className="">
-      <div className="flex items-center justify-between px-4 sm:px-8 py-6 sm:py-10 mt-12 sm:mt-20">
-        <h1 className="absolute left-1/2 transform -translate-x-1/2 text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary font-bold dark:text-white">
+      <div className="px-4 py-10 mt-16">
+        <h1 className="text-center text-lg md:text-2xl lg:text-3xl text-primary font-bold dark:text-white">
           Galeri Instagram
         </h1>
       </div>
@@ -71,9 +71,9 @@ export default function Galeri() {
 
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 mt-8 gap-4 sm:gap-x-6 sm:gap-y-14 px-4 sm:px-8 lg:px-20 mb-10">
         {filtered.length > 0 ? (
-          filtered.map((galeri) => (
+          filtered.map((galeri, index) => (
             <div
-              key={galeri.id}
+              key={index}
               className="relative aspect-square overflow-hidden rounded-xl cursor-pointer"
             >
               <img
