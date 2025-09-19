@@ -2,37 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import NavbarLayout from "@/components/layouts/navbar-layouts";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import axios from "axios";
-import {
-  BookText,
-  Camera,
-  Copy,
-  Edit2,
-  ExternalLink,
-  Fullscreen,
-  Plus,
-  Trash2,
-} from "lucide-react";
+import { Copy, Edit2, ExternalLink, Plus, Trash2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import CreatePostDialog from "@/components/admin/dialogPost";
 
 const Dashboard: React.FC = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [judul, setJudul] = useState("");
@@ -61,61 +42,44 @@ const Dashboard: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      
-      // console.log("Session:", session);
-      
-      // const res = await fetch("/api/instagram", {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   credentials: 'include',
-      // });
 
-      const res = await axios.get("/api/instagram")
-      
-      console.log("API Response:", res); 
-      if (res) { 
-        setPosts(res.data?.data?.posts)
+      const res = await axios.get("/api/instagram");
+
+      console.log("API Response:", res);
+      if (res) {
+        setPosts(res.data?.data?.posts);
       }
-        
-      
-    
-      
-      // const data = await res.json();
-      // console.log("API Response:", data);
-      
-      // if (data?.data?.po) {
-      //   setPosts(data?.data?.posts);
-      // } else {
-      //   setPosts([]);
-      // }
     } catch (err) {
       console.error("Fetch error:", err);
       const errorMessage = err instanceof Error ? err.message : String(err);
       setError(errorMessage);
       toast.error("Gagal memuat postingan", {
-        description: errorMessage
+        description: errorMessage,
       });
     } finally {
       setLoading(false);
     }
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setPreviewImage(imageUrl);
-    }
-  };
+  // const handleDelete = async (id: string) => {
+  //   if (!confirm("Apakah yakin ingin menghapus post ini?")) return;
 
-  const handleCloseDialog = () => {
-    setPreviewImage(null);
-    setJudul("");
-    setLink("");
-    setIsDialogOpen(false);
-  };
+  //   try {
+  //    const res = await axios.delete(`/api/instagram/${id}/delete`);
+
+  //     if (res.status === 200) {
+  //       toast.success("Post berhasil dihapus!");
+  //       fetchPosts(); // refresh list setelah delete
+  //     } else {
+  //       toast.error(res.data?.message || "Gagal menghapus post");
+  //     }
+  //   } catch (err: any) {
+  //     console.error("Delete error:", err);
+  //     toast.error("Terjadi kesalahan saat menghapus post", {
+  //       description: err?.response?.data?.message || err.message,
+  //     });
+  //   }
+  // };
 
   // Loading state untuk session
   if (status === "loading") {
@@ -130,7 +94,7 @@ const Dashboard: React.FC = () => {
 
   // Tidak ada session
   if (!session) {
-    return null; // Akan redirect di useEffect
+    return null; 
   }
 
   // Loading posts
@@ -156,14 +120,14 @@ const Dashboard: React.FC = () => {
             </pre>
           </div>
           <div className="space-x-4">
-            <Button 
+            <Button
               onClick={() => fetchPosts()}
               className="bg-blue-500 hover:bg-blue-600 text-white"
             >
               Coba Lagi
             </Button>
-            <Button 
-              onClick={() => window.open('/api/post-instagram', '_blank')}
+            <Button
+              onClick={() => window.open("/api/instagram", "_blank")}
               variant="outline"
             >
               Test API
@@ -178,109 +142,28 @@ const Dashboard: React.FC = () => {
     <>
       <div className="py-6 px-14">
         <div className="flex justify-end items-center mb-6 sm:items-end">
-          <Dialog
-            open={isDialogOpen}
-            onOpenChange={(open) => {
-              setIsDialogOpen(open);
-              if (!open) {
-                handleCloseDialog();
-              }
-            }}
+          <Button
+            className="flex items-center gap-2 bg-primary hover:bg-blue-500 text-white"
+            onClick={() => setIsDialogOpen(true)}
           >
-            <DialogTrigger asChild>
-              <Button
-                className="flex items-center gap-2 bg-primary hover:bg-blue-500 text-white"
-                onClick={() => setIsDialogOpen(true)}
-              >
-                <Plus size={16} />
-                <span className="text-sm font-medium">Tambah Baru</span>
-              </Button>
-            </DialogTrigger>
+            <Plus size={16} />
+            <span className="text-sm font-medium">Tambah Baru</span>
+          </Button>
 
-            <DialogContent className="sm:max-w-lg dark:text-white">
-              <DialogHeader>
-                <DialogTitle>Tambah Postingan Baru</DialogTitle>
-                <DialogDescription>
-                  Isi form berikut untuk menambahkan postingan baru.
-                </DialogDescription>
-              </DialogHeader>
-
-              <form className="space-y-4">
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="foto"
-                    className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden"
-                  >
-                    {previewImage ? (
-                      <img
-                        src={previewImage}
-                        alt="Preview"
-                        className="object-cover w-full h-full"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <Camera className="w-8 h-8 text-blue-500 mb-2" />
-                        <p className="text-sm text-gray-500">
-                          Tambahkan foto disini
-                        </p>
-                      </div>
-                    )}
-                    <input
-                      id="foto"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="hidden"
-                    />
-                  </label>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="judul">Judul Postingan</Label>
-                  <Input
-                    id="judul"
-                    placeholder="Masukkan judul"
-                    value={judul}
-                    onChange={(e) => setJudul(e.target.value)}
-                    className="dark:bg-white"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="link">Link</Label>
-                  <Input
-                    id="link"
-                    placeholder="Masukkan link"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
-                    className="dark:bg-white"
-                  />
-                </div>
-
-                <div className="flex justify-end gap-6 mt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="text-red-400 dark:bg-red-500 dark:text-white"
-                    onClick={handleCloseDialog}
-                  >
-                    Batal
-                  </Button>
-                  <Button type="submit" className="bg-blue-500 text-white">
-                    Simpan
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <CreatePostDialog
+            open={isDialogOpen}
+            onOpenChange={setIsDialogOpen}
+            onSuccess={fetchPosts}
+          />
         </div>
 
-        {/* Posts */}
         {posts.length === 0 ? (
           <div className="flex justify-center items-center min-h-64">
             <div className="text-center space-y-2">
               <div className="text-lg text-gray-500">Tidak ada postingan</div>
-              <div className="text-sm text-gray-400">Tambahkan postingan pertama Anda</div>
+              <div className="text-sm text-gray-400">
+                Tambahkan postingan pertama Anda
+              </div>
             </div>
           </div>
         ) : (
@@ -289,7 +172,7 @@ const Dashboard: React.FC = () => {
               <div className="flex flex-col md:grid md:grid-cols-4 md:items-center gap-4">
                 <div className="flex justify-center items-center mb-3 md:mb-0">
                   <Image
-                    className="w-24 aspect-square flex items-center justify-center rounded-md bg-blue-500"
+                    className="w-24 aspect-square flex items-center justify-center rounded-md bg-white object-cover"
                     src={post.thumbnail}
                     width={300}
                     height={300}
@@ -340,7 +223,10 @@ const Dashboard: React.FC = () => {
 
                 <div className="flex justify-center md:justify-end mt-3 md:mt-0">
                   <div className="flex items-center gap-3 px-4 py-2 rounded-md">
-                    <Button className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600">
+                    <Button
+                      // onClick={() => handleDelete(post._id)}
+                      className="flex items-center gap-2 text-white bg-red-500 hover:bg-red-600"
+                    >
                       <Trash2 className="w-4 h-4" />
                       Delete
                     </Button>

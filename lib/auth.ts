@@ -1,28 +1,74 @@
-import jwt from "jsonwebtoken";
-import { NextRequest } from "next/server";
+import type { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-const JWT_SECRET = process.env.JWT_SECRET!;
-if (!JWT_SECRET) {
-  throw new Error("JWT_SECRET is not defined in environment variables");
-}
+import { connectDB } from "@/lib/connectDB";
+import { User } from "@/models/Users";
+import { AuthUser } from "@/types/sessionTypes";
 
-export interface JWTPayload {
-  userId: string;
-  email: string;
-}
+const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(
+        credentials: Record<"email" | "password", string> | undefined
+      ): Promise<AuthUser | null> {
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
 
-export function generateToken(payload: JWTPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
-}
+        await connectDB();
 
-export function verifyToken(token: string): JWTPayload {
-  return jwt.verify(token, JWT_SECRET) as JWTPayload;
-}
+        const user = await User.findOne({ email: credentials.email }).select(
+          "+password"
+        );
 
-export function getTokenFromRequest(req: NextRequest): string | null {
-  const authHeader = req.headers.get("Authorization");
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    return authHeader.substring(7);
-  }
-  return null;
-}
+        if (!user) {
+          return null;
+        }
+
+        const isValid = await user.comparePassword(credentials.password);
+        if (!isValid) {
+          return null;
+        }
+
+        const returnUser: AuthUser = {
+          id: user._id.toString(),
+          email: user.email,
+          username: user.username,
+        };
+
+        return returnUser;
+      },
+    }),
+  ],
+  pages: {
+    signIn: "/login",
+  },
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.username = (user as AuthUser).username;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token && session.user) {
+        (session.user as any).id = token.id;
+        session.user.email = token.email as string;
+        (session.user as any).username = token.username;
+      }
+      return session;
+    },
+  },
+};
+
+export default authOptions;

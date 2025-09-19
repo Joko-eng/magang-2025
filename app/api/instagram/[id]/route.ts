@@ -9,7 +9,6 @@ import cloudinaryImageHandler from "@/lib/cloudinary";
 import authOptions from "@/lib/auth";
 import { instagramSchema } from "@/lib/validation-instagram";
 import { SessionUser } from "@/types/sessionTypes";
-import { InstagramData } from "@/types/instagramTypes";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -18,35 +17,10 @@ cloudinary.config({
   secure: true,
 });
 
-export async function GET(): Promise<NextResponse> {
-  try {
-    await connectDB();
-
-    const posts = await Instagram.find({})
-      .select("-createdAt -updatedAt")
-      .sort({ createdAt: -1 })
-      .lean();
-
-    return NextResponse.json(
-      successResponse(
-        {
-          posts: posts,
-          totalPosts: posts.length,
-        },
-        "Data Berhasil Diambil!"
-      ),
-      { status: 200 }
-    );
-  } catch (error: any) {
-    console.error("Tidak dapat mengambil data: ", error);
-
-    return NextResponse.json(errorResponse("Terjadi kesalahan pada server"), {
-      status: 500,
-    });
-  }
-}
-
-export async function POST(req: NextRequest): Promise<NextResponse> {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+): Promise<NextResponse> {
   try {
     const session = await getServerSession(authOptions);
 
@@ -65,58 +39,94 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    const formData = await req.formData();
-    const file = formData.get("file") as Blob | null;
-    const title = formData.get("title") as string | null;
-    const url = formData.get("url") as string | null;
+    const postId = params.id;
 
-    if (!file) {
-      return NextResponse.json(errorResponse("File gambar wajib diupload!"), {
+    if (!postId) {
+      return NextResponse.json(errorResponse("ID post wajib diisi"), {
         status: 400,
       });
     }
 
-    if (!url || !title) {
+    await connectDB();
+
+    const existingPost = await Instagram.findOne({ _id: postId, userId });
+    if (!existingPost) {
+      return NextResponse.json(
+        errorResponse("Post tidak ditemukan atau tidak memiliki akses"),
+        { status: 404 }
+      );
+    }
+
+    const formData = await req.formData();
+    const file = formData.get("file") as Blob | null;
+    const title = formData.get("title") as string | null;
+    const urlPost = formData.get("url") as string | null;
+
+    if (!urlPost || !title) {
       return NextResponse.json(errorResponse("URL dan Title wajib diisi!"), {
         status: 400,
       });
     }
 
-    const validationData = { title, url };
+    const validationData = { title, url: urlPost };
     const parsedData = instagramSchema.parse(validationData);
 
-    const cloudinaryResponse = await cloudinaryImageHandler("UPLOAD", file);
-    await connectDB();
+    let thumbnailUrl = existingPost.thumbnail;
+    let thumbnailVersion = existingPost.thumbnailVersion;
 
-    const instagramData: InstagramData = {
-      title: parsedData.title,
-      url: parsedData.url,
-      thumbnail: cloudinaryResponse.secure_url,
-      thumbnailVersion: "v.1.0.1",
-      userId,
-    };
+    if (file) {
+      const currentVersion = existingPost.thumbnailVersion;
+      const versionParts = currentVersion.split(".");
 
-    const newPostInstagram = new Instagram(instagramData);
-    await newPostInstagram.save();
+      const major = versionParts[1];
+      const minor = versionParts[2];
+      const patch = parseInt(versionParts[3]) + 1;
+      const newVersion = `v.${major}.${minor}.${patch}`;
+
+      const publicId = existingPost.thumbnail
+        .split("/")
+        .slice(-1)[0]
+        .split(".")[0];
+
+      const cloudinaryResponse = await cloudinaryImageHandler(
+        "UPDATE",
+        file,
+        publicId
+      );
+
+      thumbnailUrl = cloudinaryResponse.secure_url;
+      thumbnailVersion = newVersion;
+    }
+
+    const updatedPost = await Instagram.findByIdAndUpdate(
+      postId,
+      {
+        title: parsedData.title,
+        url: parsedData.url,
+        thumbnail: thumbnailUrl,
+        thumbnailVersion,
+      },
+      { new: true, runValidators: true }
+    );
 
     return NextResponse.json(
       successResponse(
         {
           posts: {
-            id: newPostInstagram._id,
-            title: newPostInstagram.title,
-            url: newPostInstagram.url,
-            thumbnail: newPostInstagram.thumbnail,
-            thumbnailVersion: newPostInstagram.thumbnailVersion,
-            createdAt: newPostInstagram.createdAt,
+            id: updatedPost._id,
+            title: updatedPost.title,
+            url: updatedPost.url,
+            thumbnail: updatedPost.thumbnail,
+            thumbnailVersion: updatedPost.thumbnailVersion,
+            updatedAt: updatedPost.updatedAt,
           },
         },
-        "Post Instagram Telah Dibuat!"
+        "Post Instagram Berhasil Diupdate!"
       ),
-      { status: 201 }
+      { status: 200 }
     );
   } catch (error: any) {
-    console.error("Error creating Instagram post: ", error);
+    console.error("Error updating Instagram post: ", error);
 
     if (error instanceof z.ZodError) {
       const errorMessages = error.issues
@@ -136,12 +146,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    if (error.code === 11000) {
-      return NextResponse.json(errorResponse("Data duplikat ditemukan"), {
-        status: 409,
-      });
-    }
-
     if (error.name === "ValidationError") {
       const validationMessages = Object.values(error.errors)
         .map((err: any) => err.message)
@@ -151,6 +155,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         errorResponse(`Validation failed: ${validationMessages}`),
         { status: 400 }
       );
+    }
+
+    if (error.name === "CastError") {
+      return NextResponse.json(errorResponse("ID post tidak valid"), {
+        status: 400,
+      });
     }
 
     return NextResponse.json(errorResponse("Terjadi kesalahan pada server"), {
