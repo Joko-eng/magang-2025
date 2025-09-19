@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import axios from "axios";
-import { IInstagram } from "@/types/schemaInstagramType";
+import { IInstagram } from "@/types/schemaTypes";
 
 export default function Galeri() {
   const [posts, setPosts] = useState<IInstagram[]>([]);
