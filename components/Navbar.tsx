@@ -47,7 +47,7 @@ export default function   Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#tim"
+                  href="/#tim"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Tim Kami
@@ -67,7 +67,7 @@ export default function   Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#harga"
+                  href="/#harga"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Harga
@@ -77,7 +77,7 @@ export default function   Navbar() {
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
-                  href="#tentang"
+                  href="/#tentang"
                   className="text-white font-medium transition-colors duration-200 text-sm xl:text-base"
                 >
                   Tentang Kami
