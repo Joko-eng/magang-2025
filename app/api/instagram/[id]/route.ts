@@ -19,7 +19,7 @@ cloudinary.config({
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
     const session = await getServerSession(authOptions);
@@ -39,8 +39,7 @@ export async function PUT(
       );
     }
 
-    const postId = params.id;
-
+    const { id: postId } = await params;
     if (!postId) {
       return NextResponse.json(errorResponse("ID post wajib diisi"), {
         status: 400,
@@ -48,7 +47,6 @@ export async function PUT(
     }
 
     await connectDB();
-
     const existingPost = await Instagram.findOne({ _id: postId, userId });
     if (!existingPost) {
       return NextResponse.json(
