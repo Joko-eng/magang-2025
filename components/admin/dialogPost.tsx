@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -11,7 +11,7 @@ import { toast } from "sonner";
 interface CreatePostDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSuccess?: () => void; // callback ke dashboard
+  onSuccess?: () => void; 
 }
 
 const CreatePostDialog: React.FC<CreatePostDialogProps> = ({ open, onOpenChange, onSuccess }) => {
@@ -20,6 +20,31 @@ const CreatePostDialog: React.FC<CreatePostDialogProps> = ({ open, onOpenChange,
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const savedJudul = localStorage.getItem("createpost_judul");
+    const savedLink = localStorage.getItem("createpost_link");
+    const savedImage = localStorage.getItem("createpost_previewImage");
+
+    if (savedJudul) setJudul(savedJudul);
+    if (savedLink) setLink(savedLink);
+    if (savedImage) setPreviewImage(savedImage);
+  }, []);
+
+ 
+  useEffect(() => {
+    localStorage.setItem("createpost_judul", judul);
+  }, [judul]);
+
+  useEffect(() => {
+    localStorage.setItem("createpost_link", link);
+  }, [link]);
+
+  useEffect(() => {
+    if (previewImage) {
+      localStorage.setItem("createpost_previewImage", previewImage);
+    }
+  }, [previewImage]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
