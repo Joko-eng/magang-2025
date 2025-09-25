@@ -6,14 +6,21 @@ const fetchInstagramPosts = async () => {
     await connectDB();
 
     const posts = await Instagram.find({})
-      .select('-createdAt -updatedAt') 
+      .select('-createdAt -updatedAt')
       .sort({ createdAt: -1 })
       .lean();
 
+
+    const plainPosts = posts.map((post) => ({
+      ...post,
+      _id: (post._id as string | number | { toString(): string }).toString(),
+      userId: post.userId?.toString(), 
+    }));
+
     return {
       message: 'sukses',
-      posts: posts,
-      totalPosts: posts.length,
+      posts: plainPosts,
+      totalPosts: plainPosts.length,
     };
   } catch (error: any) {
     console.error('Tidak dapat mengambil data: ', error);
