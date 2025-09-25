@@ -1,14 +1,19 @@
 import { Instagram } from '@/models/instagram';
 import { connectDB } from './connectDB';
 
-const fetchInstagramPosts = async () => {
+const fetchInstagramPosts = async (limit?: number) => {
   try {
     await connectDB();
 
-    const posts = await Instagram.find({})
+    let query = Instagram.find({})
       .select('-updatedAt -__v')
-      .sort({ createdAt: -1 })
-      .lean();
+      .sort({ createdAt: -1 });
+    
+    if (limit) {
+      query = query.limit(limit);
+    }
+
+    const posts = await query.lean();
 
     const serializedPosts = posts.map((post: any) => ({
       ...post,
@@ -23,7 +28,6 @@ const fetchInstagramPosts = async () => {
     };
   } catch (error: any) {
     console.error('Tidak dapat mengambil data: ', error);
-
     return { message: 'Terjadi kesalahan pada server', posts: [], totalPosts: 0 };
   }
 };
