@@ -6,20 +6,14 @@ const fetchInstagramPosts = async () => {
     await connectDB();
 
     const posts = await Instagram.find({})
-      .select('-updatedAt -__v')
+      .select('-createdAt -updatedAt') 
       .sort({ createdAt: -1 })
       .lean();
 
-    const serializedPosts = posts.map((post: any) => ({
-      ...post,
-      _id: post._id.toString(),
-      userId: post.userId?.toString() ?? null,
-    }));
-
     return {
       message: 'sukses',
-      posts: serializedPosts,
-      totalPosts: serializedPosts.length,
+      posts: posts,
+      totalPosts: posts.length,
     };
   } catch (error: any) {
     console.error('Tidak dapat mengambil data: ', error);
