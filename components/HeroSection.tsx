@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 function HeroSection() {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden px-4 sm:px-8">
-      {/* Hero Background */}
       <div className="absolute inset-0">
         <Image
           src="/image/backround.png"
@@ -20,7 +19,6 @@ function HeroSection() {
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      {/* Hero Content */}
 
       <main className="relative z-10 flex flex-col justify-start min-h-[70vh] container mx-auto px-4 sm:px-6 text-left pt-36 sm:pt-40 lg:pt-52">
         <motion.div
