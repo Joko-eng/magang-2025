@@ -1,6 +1,6 @@
-import fetchInstagramPosts from '@/lib/fetchInstagramPosts';
-import PostCard from './PostCard';
-import CreatePostBtn from './CreatePostBtn';
+import fetchInstagramPosts from "@/lib/fetchInstagramPosts";
+import PostCard from "./PostCard";
+import CreatePostBtn from "./CreatePostBtn";
 
 const DashboardPage = async () => {
   const { posts } = await fetchInstagramPosts();
@@ -16,7 +16,9 @@ const DashboardPage = async () => {
         <div className="flex justify-center items-center min-h-64">
           <div className="text-center space-y-2">
             <div className="text-lg text-gray-500">Tidak ada postingan</div>
-            <div className="text-sm text-gray-400">Tambahkan postingan pertama Anda</div>
+            <div className="text-sm text-gray-400">
+              Tambahkan postingan pertama Anda
+            </div>
           </div>
         </div>
       ) : (

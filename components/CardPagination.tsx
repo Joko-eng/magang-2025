@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
