@@ -2,7 +2,7 @@ import { Instagram } from "@/models/instagram";
 import { connectDB } from "./connectDB";
 
 export const fetchInstagramPaginated = async ({ page }: { page?: number }) => {
-  const limit = 4;
+  const limit = 8;
   const currentPage = Math.max(1, page || 1);
   const skip = (currentPage - 1) * limit;
 
