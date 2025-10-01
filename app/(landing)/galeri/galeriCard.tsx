@@ -55,7 +55,7 @@ export default function Galeri({ posts, currentPage, totalPages }: Props) {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center space-x-2 pb-10">
-          <Link href={`?page=${currentPage - 1}`} scroll={false}>
+          <Link href={`/galeri`} scroll={false}>
             <button
               disabled={currentPage === 1}
               className={`flex items-center px-3 py-2 text-sm font-medium border rounded-lg 
@@ -70,19 +70,22 @@ export default function Galeri({ posts, currentPage, totalPages }: Props) {
           </Link>
 
           <div className="flex space-x-1">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <Link key={page} href={`?page=${page}`} scroll={false}>
-                <button
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    currentPage === page
-                      ? "text-white bg-primary hover:bg-primary/80"
-                      : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                  }`}
-                >
-                  {page}
-                </button>
-              </Link>
-            ))}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+              const href = page === 1 ? "/galeri" : `?page=${page}`;
+              return (
+                <Link key={page} href={href} scroll={false}>
+                  <button
+                    className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                      currentPage === page
+                        ? "text-white bg-primary hover:bg-primary/80"
+                        : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                </Link>
+              );
+            })}
           </div>
 
           <Link href={`?page=${currentPage + 1}`} scroll={false}>
