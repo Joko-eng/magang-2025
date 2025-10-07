@@ -40,10 +40,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const DashboardPage = async ({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const params = await searchParams;
-  const page = parseInt(params.page || "1", 10);
+  const page = params.page ? Number(params.page): 1;
 
   // Ambil data dari server dengan pagination
   const { posts, pageInfo } = await fetchInstagramPosts({ page, limit: 6 });

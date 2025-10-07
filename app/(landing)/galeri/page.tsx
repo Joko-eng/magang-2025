@@ -1,13 +1,11 @@
 import { fetchInstagramPaginated } from "@/lib/fetchInstagramPagination";
 import Galeri from "./galeriCard";
 
-interface Props {
-  searchParams?: { page?: string };
-}
 
-export default async function GaleriPage({ searchParams }: Props) {
+
+export default async function GaleriPage({ searchParams }: {searchParams: Promise<{[key: string]: string | string[] | undefined}>}) {
   const params = await searchParams;
-  const currentPage = Number(params?.page) || 1;
+  const currentPage = params.page ? Number(params.page): 1;
 
   const { data, pageInfo } = await fetchInstagramPaginated({
     page: currentPage,

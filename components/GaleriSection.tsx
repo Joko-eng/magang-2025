@@ -3,7 +3,7 @@ import fetchInstagramPosts from "@/lib/fetchInstagramPosts";
 import Link from "next/link";
 
 export default async function GaleriSection() {
-  const { posts } = await fetchInstagramPosts(5);
+  const { posts } = await fetchInstagramPosts({page: 1, limit: 5});
 
   const bentoLayout = [
     { span: "col-span-2 row-span-2", index: 0 },
